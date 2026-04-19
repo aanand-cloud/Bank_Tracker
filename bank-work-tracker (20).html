@@ -1,0 +1,2157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Bank Tracker">
+<meta name="application-name" content="Bank Tracker">
+<meta name="theme-color" content="#0d1f4e">
+<meta name="description" content="NHS Bank Work Tracker — hours, pay and annual leave">
+<link rel="apple-touch-icon" sizes="180x180" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAYAAAA9zQYyAAAEiUlEQVR42u3dv09dBRTA8XNvsZhWqBo1gGlAEklMqnEwDrpo3IxpTRx0dNEOrhoX/ReMgzFhcTFpolMhxs3oaNfSiThAYoXGQeRFkSDiYklbpDwK99d5n88GeeFd3vvmvHMvDyiiQSOT53eCdHrL80VT912Il0yRFyImU9yFkMkUdiFkMoVdCJlMYZdipi2Oo6VSzGSKuhAymVaQUsxkmtalmMkUdSlmMkVdiplMUZdiJlPUpYeJTErTmUxTuhQzmaIuxUymqO3QpFKYzvRj7JuxA2+z+tpq7cd154/HhzxVHCXi/W7fRNx7JrTpzGEj7kfVcd86pe3QVBpzlV/3rhPadBZyHaqa1jentAkt5lT3J2gxp7rf0roh5gz3f7NhE1rMqY5D0GJOdTyCJhVBm86pjqtwQijmtjiOa9QmNKl4cxJ9e2zowXj7kVfixQeeirMnH43hYihWt9ZicfN6zP32Y3zXuxpbO383eoxWDutGX54cnohL0+/HmROn973NBz9/EXNrVxpdO0xo+vLxxFu3xTy/diU+uXE51rf/jCeGx+KNh16IzX+2rBy03+iJU/H86Zndj3/f/iM++uXL+Ou/gBc2lmJhY6kVx+qk0LpxoIn7Ho7ylrfO/7S5shtz245X0Bzo/vLkbR/3tjdae6yCJhU7NPt6eeSZmJ18b8/nXxp5OhbPze5+/ENvId5d/syEBhOa2nzfuxoz1y7Gs6em4+vpD1s5kU1oUhM0ggZB04im/oJRU8frpJB9fXr2nXj1zHN7Pn/nZbvd29+Yi89//daEhuPi7aMDwm+sgJNCEDQdeTnvwvEJWtSpjkvQpNKa69DrS3Mrno56zFy7OJ71VaPxy3ZCHtyoq1iBGgtayIMddVX7fCnmwbV4bnYlU8yNBC3mwY666istta4cYh7cFaSuS4Yu21H5tK7zVaC2CW06D9bE/r+IR6cuVH4S6v3Q9BVlP3E3dZJZ+4Q2nalrStuhSUXQCBoEDYIGQSNoEDS0Ti0/KXz89a/GPdSY0CBoBA2CBkGDoEHQCBoEDYIGQYOgETQIGgQNggZBI2gQNDSqlt8pvH75TX+skYiIGJ265I81gqARNAgaBA2CBkEjaBA0CBoEDYJG0CBoEDQIGgSNoEHQIGgQNAgaQYOgQdAgaBA0ggZBg6BB0AgaBH04o1MXxj3U1NGBCY0JbUrT1uffhMaENqVp6/NeZv7mGKyYG1s5RC3mqhQjk+d3mvym15fm/A9DIecJWthCThk0dHaHBkGDoBE0CBoEDYIGQSNoEDQIGgQNgmYAgu4tzxceBjLoLc8XJjRWDhA0CBruIWgnhmQ4ITShsXJAJ4K2dtD1dcOEJvfKYUrT5elsQpP/pNCUpqvT2YQm/4Q2penqdL7rhBY1XYv5wJVD1HQpZjs0g7FDm9J0cTr3PaFFTRdiPtTKIWraHvOhd2hR0+aY7+mkUNS0NeaIiCPF6R8O0ZaQ73lCm9a0NeYjBy1q2hTzkVcOKwhtCbmSoIVN06/ula4LwqbuNbW2/VfcIq7jfho9oRO5eI/bvxsrlw6xEnTsAAAAAElFTkSuQmCC">
+<link rel="manifest" id="pwa-manifest">
+<title>Bank Work Tracker</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f0f4ff;--surface:#fff;--surface2:#e8eeff;
+  --border:rgba(26,79,168,0.12);--border2:rgba(26,79,168,0.25);
+  --text:#0d1f4e;--text2:#3a5080;--text3:#8a9ec0;
+  --bank:#1a4fa8;--bank2:#0d3278;--bank-bg:#edf2ff;--bank-light:#c8d8ff;
+  --green:#1a7a45;--green-bg:#edfff4;--green-border:#c0ddc8;
+  --amber:#b87c00;--amber-bg:#fff8e1;
+  --red:#c4521a;--red-bg:#fef3ec;
+  --wa:#25d366;--radius:14px;--radius-sm:8px;
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html,body{height:100%;background:var(--bg);font-family:'DM Sans',sans-serif;color:var(--text)}
+.app{max-width:480px;margin:0 auto;min-height:100vh;display:flex;flex-direction:column;position:relative}
+
+/* ── SETUP SCREEN ── */
+.setup-screen{position:fixed;inset:0;background:linear-gradient(160deg,#0d1f4e 0%,#1a4fa8 60%,#2563c7 100%);display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding:1.5rem 1.25rem 2rem;z-index:200;transition:opacity .4s;overflow-y:auto;-webkit-overflow-scrolling:touch}
+.setup-screen.hidden{opacity:0;pointer-events:none}
+.setup-inner{display:flex;flex-direction:column;align-items:center;width:100%;max-width:420px;min-height:100%;justify-content:center;padding:1rem 0}
+.setup-logo-big{display:flex;flex-direction:column;align-items:center;margin-bottom:1.5rem;flex-shrink:0}
+.setup-logo-big svg{width:60px;height:60px;margin-bottom:.75rem}
+.setup-app-name{font-family:'DM Serif Display',serif;font-size:1.75rem;color:#fff;text-align:center;line-height:1.1}
+.setup-app-sub{font-size:13px;color:rgba(255,255,255,.6);margin-top:.35rem;text-align:center}
+.setup-card{background:rgba(255,255,255,.1);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.2);border-radius:20px;padding:1.5rem;width:100%}
+.setup-card h2{font-family:'DM Serif Display',serif;font-size:1.3rem;color:#fff;margin-bottom:.35rem}
+.setup-card p{font-size:13px;color:rgba(255,255,255,.65);margin-bottom:1rem}
+.setup-step-dot{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.3);transition:background .3s}
+.setup-step-dot.active{background:#fff}
+.setup-step-line{flex:1;height:2px;background:rgba(255,255,255,.2);max-width:40px}
+.setup-step-label{font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:.5rem}
+.setup-input{width:100%;padding:12px 14px;border-radius:var(--radius-sm);border:1.5px solid rgba(255,255,255,.3);background:rgba(255,255,255,.15);color:#fff;font-family:'DM Sans',sans-serif;font-size:15px;outline:none;transition:border-color .15s}
+.setup-input::placeholder{color:rgba(255,255,255,.45)}
+.setup-input:focus{border-color:rgba(255,255,255,.7)}
+.setup-btn{width:100%;margin-top:.65rem;padding:12px;border-radius:var(--radius-sm);border:none;background:#fff;color:var(--bank);font-family:'DM Sans',sans-serif;font-size:15px;font-weight:600;cursor:pointer;transition:opacity .15s}
+.setup-btn:active{opacity:.85}
+
+/* ── HEADER ── */
+.header{background:linear-gradient(135deg,#0d1f4e 0%,#1a4fa8 100%);padding:1.75rem 1.5rem 1.25rem;position:relative;overflow:hidden}
+.header::after{content:'';position:absolute;top:-30px;right:-30px;width:140px;height:140px;border-radius:50%;background:rgba(255,255,255,.06)}
+.header-inner{display:flex;align-items:center;justify-content:space-between;position:relative;z-index:1}
+.header-left{display:flex;align-items:center;gap:12px}
+.app-logo{width:38px;height:38px;flex-shrink:0}
+.header-title-wrap{}
+.app-name{font-family:'DM Serif Display',serif;font-size:1.15rem;color:#fff;line-height:1}
+.app-user{font-size:12px;color:rgba(255,255,255,.65);margin-top:2px}
+.header-date{font-size:11px;color:rgba(255,255,255,.55);background:rgba(255,255,255,.12);border-radius:20px;padding:3px 10px;position:relative;z-index:1}
+
+/* ── NAV ── */
+.nav{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;padding:.65rem 1rem .65rem;background:#fff;border-bottom:1px solid var(--border)}
+.nav-btn{padding:8px 4px;border-radius:var(--radius-sm);border:none;background:transparent;font-family:'DM Sans',sans-serif;font-size:10px;font-weight:500;color:var(--text3);cursor:pointer;transition:all .2s;text-align:center;line-height:1.4;display:flex;flex-direction:column;align-items:center;gap:3px}
+.nav-btn .nicon{font-size:17px;line-height:1}
+.nav-btn.active{background:var(--bank-bg);color:var(--bank);font-weight:600}
+.nav-btn.active .nicon{transform:scale(1.1)}
+.nav-btn.green-nav.active{background:var(--green-bg);color:var(--green)}
+
+/* ── CONTENT ── */
+.content{flex:1;padding:0 1.25rem 5rem;overflow-y:auto}
+.pane{display:none}.pane.active{display:block;padding-top:1rem}
+
+/* ── CARDS / UTILS ── */
+.glbl{font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--text);margin:1rem 0 .5rem;padding-bottom:5px;border-bottom:1.5px solid var(--border2)}
+.empty{text-align:center;padding:2.5rem 1rem;color:var(--text3);font-size:13px}
+.emptyicon{font-size:2.2rem;margin-bottom:.6rem;display:block}
+.del{background:none;border:none;color:var(--text3);cursor:pointer;font-size:19px;line-height:1;padding:2px 4px}
+.del:active{color:var(--red)}
+
+/* ── HERO (Bank Work tab) ── */
+.bhero{background:linear-gradient(135deg,#1a4fa8,#0d3278);border-radius:var(--radius);padding:1.25rem;margin-bottom:1rem;color:#fff;position:relative;overflow:hidden}
+.bhero::after{content:'';position:absolute;bottom:-20px;right:-20px;width:100px;height:100px;border-radius:50%;background:rgba(255,255,255,.07)}
+.bherolbl{font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;opacity:.85;margin-bottom:.2rem}
+.bherorange{font-size:12px;opacity:.6;margin-bottom:.4rem}
+.bherohrs{font-family:'DM Serif Display',serif;font-size:2.8rem;line-height:1;position:relative;z-index:1}
+.bherosub{font-size:12px;opacity:.7;margin-top:.2rem}
+.bprogbar{height:4px;background:rgba(255,255,255,.2);border-radius:2px;overflow:hidden;margin-top:.75rem}
+.bprogfill{height:100%;background:#fff;border-radius:2px;transition:width .4s}
+
+/* ── SALARY TOGGLE ── */
+.sal-bar{display:flex;align-items:center;justify-content:space-between;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);padding:9px 13px;margin-bottom:1rem}
+.sal-bar-lbl{font-size:13px;color:var(--text2);display:flex;align-items:center;gap:6px}
+.sal-btn{display:flex;align-items:center;gap:5px;padding:6px 14px;border-radius:20px;border:none;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:600;cursor:pointer;transition:all .2s}
+.sal-btn.show-mode{background:var(--green);color:#fff}
+.sal-btn.hide-mode{background:var(--red);color:#fff}
+.pay-locked{background:var(--surface2);border:1.5px dashed var(--border2);border-radius:var(--radius);padding:1.25rem;margin-bottom:1rem;text-align:center;color:var(--text3);font-size:13px}
+.pay-locked-icon{font-size:1.6rem;display:block;margin-bottom:.35rem}
+
+/* ── PAY CARD ── */
+.paycard{background:var(--surface);border:1.5px solid var(--bank-light);border-radius:var(--radius);padding:1rem;margin-bottom:1rem}
+.payctitle{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--bank);margin-bottom:.75rem}
+.payrow{display:flex;justify-content:space-between;align-items:baseline;padding:5px 0;border-bottom:.5px solid var(--border)}
+.payrow:last-child{border-bottom:none}
+.payrlbl{font-size:13px;color:var(--text2)}
+.payrlbl small{font-size:11px;color:var(--text3);display:block;margin-top:1px}
+.payval{font-size:14px;font-weight:600;color:var(--text)}
+.payval.neg{color:var(--red)}
+.paytotal{display:flex;justify-content:space-between;align-items:center;margin-top:.75rem;padding:.75rem;background:var(--bank-bg);border-radius:var(--radius-sm)}
+.paytlbl{font-size:13px;font-weight:700;color:var(--bank)}
+.paytval{font-family:'DM Serif Display',serif;font-size:1.6rem;color:var(--bank)}
+
+/* ── MINI STATS ── */
+.mini-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:1rem}
+.mstat{background:var(--surface);border:1px solid var(--bank-light);border-radius:var(--radius);padding:10px 8px;text-align:center}
+.mstatn{font-family:'DM Serif Display',serif;font-size:1.3rem;color:var(--bank);line-height:1}
+.mstatl{font-size:10px;color:var(--text2);margin-top:2px;font-weight:700;text-transform:uppercase;letter-spacing:.04em}
+
+/* ── BANK FORM ── */
+.bform{background:var(--surface);border-radius:var(--radius);border:1.5px solid var(--bank-light);padding:1rem;margin-bottom:1rem;display:flex;flex-direction:column;gap:9px}
+.bform-title{font-size:14px;font-weight:700;color:var(--bank)}
+.tlbl{font-size:11px;color:var(--text2);font-weight:700;text-transform:uppercase;letter-spacing:.05em;margin-bottom:3px}
+.bform input,.bform select,.alform input,.alform select{width:100%;padding:9px 12px;border-radius:var(--radius-sm);border:1.5px solid var(--border);background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;font-size:14px;outline:none;transition:border-color .15s}
+.bform input:focus,.bform select:focus{border-color:var(--bank)!important}
+.bform input::placeholder{color:var(--text3)}
+.form-row{display:flex;gap:8px}
+.abtn{padding:9px 16px;border-radius:var(--radius-sm);border:none;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:600;cursor:pointer;white-space:nowrap;transition:opacity .15s}
+.abtn:active{opacity:.75}
+.abtn.blue{background:var(--bank);color:#fff}
+.abtn.green{background:var(--green);color:#fff}
+
+/* ── BANK ENTRY ── */
+.bentry{background:var(--surface);border:1px solid var(--bank-light);border-radius:var(--radius);padding:11px 13px;margin-bottom:7px}
+.bentryrow{display:flex;align-items:flex-start;gap:10px}
+.bentryicon{width:34px;height:34px;border-radius:var(--radius-sm);background:var(--bank-bg);display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0}
+.bentrybody{flex:1;min-width:0}
+.bentryhrs{font-family:'DM Serif Display',serif;font-size:1.05rem;color:var(--bank);line-height:1}
+.bentrydet{font-size:12px;color:var(--text2);margin-top:2px}
+
+/* ── WEEK SELECTOR ── */
+.wksel{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);margin-bottom:1rem;overflow:hidden}
+.wkselitem{padding:12px 14px;border-bottom:.5px solid var(--border);cursor:pointer;display:flex;justify-content:space-between;align-items:center;transition:background .15s}
+.wkselitem:last-child{border-bottom:none}
+.wkselitem:hover,.wkselitem:active{background:var(--bank-bg)}
+.wkselitem.sel{background:var(--bank-bg)}
+.wksellbl{font-size:14px;font-weight:700}
+.wkselsub{font-size:12px;color:var(--text3);margin-top:1px}
+.wkselval{text-align:right}
+.wkselhrs{font-family:'DM Serif Display',serif;font-size:1rem;color:var(--bank)}
+.cur-badge{font-size:10px;background:var(--red);color:#fff;border-radius:4px;padding:1px 6px;margin-left:5px;vertical-align:middle}
+/* Month accordion */
+.mo-accordion{margin-bottom:.5rem;border:1px solid var(--border);border-radius:var(--radius);overflow:hidden}
+.mo-summary{display:flex;justify-content:space-between;align-items:center;padding:11px 14px;cursor:pointer;background:var(--surface2);list-style:none;user-select:none}
+.mo-summary::-webkit-details-marker{display:none}
+details.mo-accordion[open] .mo-summary{background:var(--bank-bg);border-bottom:1px solid var(--bank-light)}
+.mo-summary:hover{background:var(--bank-bg)}
+.mo-title{font-size:13px;font-weight:800;letter-spacing:.03em;color:var(--text)}
+.mo-meta{font-size:11px;color:var(--text3);margin-top:1px}
+.mo-right{text-align:right}
+.mo-total{font-family:'DM Serif Display',serif;font-size:.95rem;color:var(--bank)}
+.mo-arrow{font-size:10px;color:var(--text3);margin-left:8px;transition:transform .2s}
+details.mo-accordion[open] .mo-arrow{transform:rotate(180deg)}
+
+/* ── ANNUAL LEAVE ── */
+.al-hero{background:linear-gradient(135deg,#1a7a45,#0d5230);border-radius:var(--radius);padding:1.25rem;margin-bottom:1rem;color:#fff}
+.al-hero-lbl{font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;opacity:.85;margin-bottom:.2rem}
+.al-hero-sub{font-size:12px;opacity:.6;margin-bottom:.4rem}
+.al-bal{font-family:'DM Serif Display',serif;font-size:2.8rem;line-height:1}
+.al-bal-sub{font-size:12px;opacity:.75;margin-top:.2rem}
+.al-pb{height:4px;background:rgba(255,255,255,.2);border-radius:2px;overflow:hidden;margin-top:.75rem}
+.al-pbf{height:100%;background:#fff;border-radius:2px;transition:width .4s}
+.al-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:1rem}
+.alstat{background:var(--surface);border:1px solid var(--green-border);border-radius:var(--radius);padding:10px 8px;text-align:center}
+.alstatn{font-family:'DM Serif Display',serif;font-size:1.3rem;color:var(--green);line-height:1}
+.alstatl{font-size:10px;color:var(--text2);margin-top:2px;font-weight:700;text-transform:uppercase;letter-spacing:.04em}
+.al-info{background:var(--green-bg);border:1px solid var(--green-border);border-radius:var(--radius);padding:.85rem 1rem;margin-bottom:1rem;font-size:13px;color:#1a4a2a;line-height:1.5}
+.alform{background:var(--surface);border-radius:var(--radius);border:1.5px solid var(--green-border);padding:1rem;margin-bottom:1rem;display:flex;flex-direction:column;gap:9px}
+.alform-title{font-size:14px;font-weight:700;color:var(--green)}
+.alform input:focus,.alform select:focus{border-color:var(--green)!important}
+.alentry{background:var(--surface);border:1px solid var(--green-border);border-radius:var(--radius);padding:11px 13px;margin-bottom:7px;display:flex;align-items:flex-start;gap:10px}
+.alentry-icon{width:34px;height:34px;border-radius:var(--radius-sm);background:var(--green-bg);display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0}
+.alentry-icon.taken{background:#fff3f3}
+.alentry-body{flex:1;min-width:0}
+.alentry-hrs{font-family:'DM Serif Display',serif;font-size:1.05rem;color:var(--green);line-height:1}
+.alentry-hrs.taken{color:var(--red)}
+.alentry-det{font-size:12px;color:var(--text2);margin-top:2px}
+.accrual-table{background:var(--surface);border:1px solid var(--green-border);border-radius:var(--radius);overflow:hidden;margin-bottom:1rem}
+.accrual-row{display:flex;justify-content:space-between;align-items:center;padding:10px 13px;border-bottom:.5px solid var(--border)}
+.accrual-row:last-child{border-bottom:none}
+.accrual-row.total{background:var(--green-bg)}
+
+/* ── PW BLUR ── */
+.pw-pay-section{transition:filter .3s}
+.pw-pay-section.blurred{filter:blur(6px);user-select:none;pointer-events:none}
+.pay-sensitive{transition:filter .3s}
+.pay-sensitive.blurred{filter:blur(5px);user-select:none}
+
+/* ── WATERMARK ── */
+.watermark{text-align:center;padding:.75rem 0 .25rem;font-size:12px;color:var(--text3);font-style:italic;letter-spacing:.03em}
+.watermark strong{color:var(--bank);font-style:normal}
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" async onerror="console.warn('jsPDF CDN failed — PDF export unavailable')"></script>
+</head>
+<body>
+<div class="app">
+
+  <!-- SETUP SCREEN — shown on first launch, or when editing account -->
+  <div class="setup-screen" id="setup-screen">
+    <div class="setup-inner">
+    <div class="setup-logo-big">
+      <svg viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="72" height="72" rx="18" fill="white" fill-opacity="0.15"/>
+        <rect x="10" y="22" width="52" height="34" rx="6" fill="white" fill-opacity="0.9"/>
+        <rect x="10" y="30" width="52" height="8" fill="#1a4fa8"/>
+        <rect x="18" y="42" width="12" height="6" rx="2" fill="#1a4fa8" fill-opacity="0.5"/>
+        <rect x="34" y="42" width="20" height="6" rx="2" fill="#1a4fa8" fill-opacity="0.3"/>
+        <circle cx="54" cy="18" r="10" fill="#25d366"/>
+        <text x="54" y="22" text-anchor="middle" font-size="12" fill="white" font-weight="bold">£</text>
+      </svg>
+      <div class="setup-app-name">Bank Work<br>Tracker</div>
+      <div class="setup-app-sub">Hours · Pay · Annual Leave</div>
+    </div>
+
+    <!-- Step indicators -->
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:1rem">
+      <div class="setup-step-dot active" id="sdot-1"></div>
+      <div class="setup-step-line"></div>
+      <div class="setup-step-dot" id="sdot-2"></div>
+      <div class="setup-step-line"></div>
+      <div class="setup-step-dot" id="sdot-3"></div>
+    </div>
+
+    <!-- STEP 1: Name -->
+    <div class="setup-card" id="setup-step-1">
+      <div class="setup-step-label">Step 1 of 3</div>
+      <h2>What&#8217;s your name?</h2>
+      <p>This personalises the app just for you.</p>
+      <input class="setup-input" id="setup-name" type="text" placeholder="e.g. Anand" maxlength="30" autocomplete="off">
+      <button class="setup-btn" onclick="setupNext1()">Next &#8594;</button>
+    </div>
+
+    <!-- STEP 2: Band -->
+    <div class="setup-card" id="setup-step-2" style="display:none">
+      <div class="setup-step-label">Step 2 of 3</div>
+      <h2>Your NHS Band</h2>
+      <p>Select your Agenda for Change pay band and pay point.</p>
+      <select class="setup-input" id="setup-band" onchange="setupBandChanged()" style="cursor:pointer">
+        <option value="2">Band 2 — £12.92/hr (HCA, domestic, porter)</option>
+        <option value="3">Band 3 — £13.20–14.10/hr (CSW, therapy asst)</option>
+        <option value="4">Band 4 — £14.55–15.97/hr (Nursing associate)</option>
+        <option value="5">Band 5 — £16.41–19.98/hr (Nurse, physio, OT)</option>
+        <option value="6">Band 6 — £20.76–23.99/hr (Sister, pharmacist)</option>
+        <option value="7">Band 7 — £22.32–25.90/hr (Ward sister, senior)</option>
+        <option value="8a">Band 8a — £27.13–30.13/hr (Advanced practitioner)</option>
+        <option value="8b">Band 8b — £29.55–34.69/hr (Head of nursing)</option>
+        <option value="8c">Band 8c — £35.75–41.45/hr (Associate director)</option>
+        <option value="8d">Band 8d — £43.50–51.02/hr (Director)</option>
+        <option value="9">Band 9 — £53.77–66.37/hr (Very senior manager)</option>
+      </select>
+      <div style="margin-top:.75rem">
+        <div style="font-size:11px;color:rgba(255,255,255,.55);margin-bottom:4px;text-transform:uppercase;letter-spacing:.05em;font-weight:600">Pay Point</div>
+        <select class="setup-input" id="setup-point" style="cursor:pointer">
+          <option value="0">Entry pay point — £12.92/hr</option>
+        </select>
+      </div>
+      <div style="display:flex;gap:8px;margin-top:.75rem">
+        <button class="setup-btn" onclick="setupBack1()" style="background:rgba(255,255,255,.15);color:#fff;flex:0 0 auto;padding:13px 20px">&#8592;</button>
+        <button class="setup-btn" onclick="setupNext2()" style="flex:1">Next &#8594;</button>
+      </div>
+    </div>
+
+    <!-- STEP 3: Confirm -->
+    <div class="setup-card" id="setup-step-3" style="display:none">
+      <div class="setup-step-label">Step 3 of 3</div>
+      <h2>All set, <span id="confirm-name">Anand</span>!</h2>
+      <p>Here&#8217;s what we&#8217;ll use for your calculations:</p>
+      <div style="background:rgba(255,255,255,.12);border-radius:10px;padding:.65rem .85rem;margin:.65rem 0">
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.1)">
+          <span style="font-size:12px;opacity:.75">Name</span>
+          <span style="font-size:13px;font-weight:600" id="confirm-name2">Anand</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.1)">
+          <span style="font-size:12px;opacity:.75">NHS Band</span>
+          <span style="font-size:13px;font-weight:600" id="confirm-band">Band 2</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.1)">
+          <span style="font-size:12px;opacity:.75">Pay Point</span>
+          <span style="font-size:13px;font-weight:600" id="confirm-point">Entry — £12.92/hr</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.1)">
+          <span style="font-size:12px;opacity:.75">Normal rate</span>
+          <span style="font-size:13px;font-weight:600" id="confirm-nr">£12.92/hr</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:5px 0">
+          <span style="font-size:12px;opacity:.75">Unsocial rate</span>
+          <span style="font-size:13px;font-weight:600" id="confirm-ur">£18.22/hr (+41%)</span>
+        </div>
+      </div>
+      <div style="font-size:11px;color:rgba(255,255,255,.5);margin-bottom:.75rem">You can update these anytime in Overview &#8594; Settings</div>
+      <div style="display:flex;gap:8px">
+        <button class="setup-btn" onclick="setupBack2()" style="background:rgba(255,255,255,.15);color:#fff;flex:0 0 auto;padding:13px 20px">&#8592;</button>
+        <button class="setup-btn" id="confirm-btn" onclick="saveUser()" style="flex:1">&#127974; Start Tracking!</button>
+      </div>
+    </div>
+
+    <div class="watermark" style="color:rgba(255,255,255,.3);margin-top:1.5rem">&#9749; Created by <strong style="color:rgba(255,255,255,.5);font-style:normal">Anand</strong></div>
+    </div><!-- end setup-inner -->
+  </div>
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-inner">
+      <div class="header-left">
+        <svg class="app-logo" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="38" height="38" rx="10" fill="white" fill-opacity="0.15"/>
+          <rect x="5" y="11" width="28" height="18" rx="3" fill="white" fill-opacity="0.9"/>
+          <rect x="5" y="16" width="28" height="5" fill="#1a4fa8"/>
+          <rect x="9" y="23" width="7" height="3" rx="1" fill="#1a4fa8" fill-opacity="0.5"/>
+          <rect x="18" y="23" width="11" height="3" rx="1" fill="#1a4fa8" fill-opacity="0.3"/>
+          <circle cx="30" cy="9" r="5" fill="#25d366"/>
+          <text x="30" y="12" text-anchor="middle" font-size="6" fill="white" font-weight="bold">£</text>
+        </svg>
+        <div class="header-title-wrap">
+          <div class="app-name">Bank Work Tracker</div>
+          <div class="app-user" id="hdr-user">Loading...</div>
+        </div>
+      </div>
+      <div class="header-date" id="hdr-date"></div>
+    </div>
+    <!-- Install prompt (shown only on Android Chrome when installable) -->
+    <div id="install-app-btn" onclick="triggerInstall()" style="display:none;align-items:center;justify-content:center;gap:6px;background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.3);border-radius:20px;padding:6px 14px;margin:0 16px 8px;cursor:pointer;font-size:12px;color:#fff;font-weight:600">
+      &#8659; Install App on your phone
+    </div>
+  </div>
+
+  <!-- NAV -->
+  <div class="nav">
+    <button class="nav-btn active" onclick="sw('bank',this)"><span class="nicon">&#127974;</span>Bank Work</button>
+    <button class="nav-btn" onclick="sw('prevweeks',this)"><span class="nicon">&#128203;</span>All Weeks</button>
+    <button class="nav-btn green-nav" onclick="sw('al',this)"><span class="nicon">&#127334;</span>Accrued A/L</button>
+    <button class="nav-btn" onclick="sw('overview',this)"><span class="nicon">&#128202;</span>Overview</button>
+    <button class="nav-btn" onclick="sw('settings',this)" style="grid-column:span 4;border-radius:var(--radius-sm)"><span class="nicon">&#9881;</span> Settings &amp; Account</button>
+  </div>
+
+  <div class="content">
+
+    <!-- BANK WORK TAB -->
+    <div id="p-bank" class="pane active">
+
+      <!-- LOG FORM — top of tab -->
+      <div class="bform">
+        <div style="background:linear-gradient(135deg,#1a4fa8,#0d3278);border-radius:var(--radius-sm);padding:.85rem">
+          <div style="font-size:14px;font-weight:700;color:#fff;margin-bottom:.65rem">&#9889; Log Bank Session</div>
+          <div style="display:flex;gap:6px;margin-bottom:.5rem">
+            <button onclick="qlSetDate(0)" id="ql-today" style="flex:1;padding:9px 4px;border-radius:8px;border:2px solid rgba(255,255,255,.6);background:rgba(255,255,255,.25);color:#fff;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:700;cursor:pointer">Today</button>
+            <button onclick="qlSetDate(-1)" id="ql-yesterday" style="flex:1;padding:9px 4px;border-radius:8px;border:2px solid rgba(255,255,255,.2);background:transparent;color:rgba(255,255,255,.8);font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;cursor:pointer">Yesterday</button>
+            <button onclick="qlSetDate(1)" id="ql-tomorrow" style="flex:1;padding:9px 4px;border-radius:8px;border:2px solid rgba(255,255,255,.2);background:transparent;color:rgba(255,255,255,.8);font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;cursor:pointer">Tomorrow</button>
+          </div>
+          <div style="margin-bottom:.75rem">
+            <div style="font-size:10px;color:rgba(255,255,255,.6);font-weight:700;letter-spacing:.05em;margin-bottom:4px">&#128197; OR PICK ANY DATE (for past/future weeks)</div>
+            <input id="ql-date" type="date" onchange="qlDatePicked()" style="width:100%;padding:9px 12px;border-radius:8px;border:2px solid rgba(255,255,255,.4);background:rgba(255,255,255,.9);color:#0d1f4e;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:600;outline:none;cursor:pointer">
+          </div>
+          <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:.7rem">
+            <div style="display:flex;align-items:center;gap:8px">
+              <div style="font-size:11px;color:#fff;font-weight:800;letter-spacing:.05em;min-width:36px;text-shadow:0 1px 2px rgba(0,0,0,.3)">FROM</div>
+              <div style="display:flex;flex:1;gap:6px;align-items:center">
+                <select id="ql-fh" style="min-width:58px;flex:1;padding:10px 6px;border-radius:8px;border:2px solid rgba(255,255,255,.6);background:#fff;color:#0d1f4e;font-family:'DM Sans',sans-serif;font-size:20px;font-weight:700;outline:none;text-align:center;cursor:pointer"><option value="00">00</option><option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option></select>
+                <span style="color:#fff;font-size:20px;font-weight:800;padding:0 2px">:</span>
+                <select id="ql-fm" style="min-width:58px;flex:1;padding:10px 6px;border-radius:8px;border:2px solid rgba(255,255,255,.6);background:#fff;color:#0d1f4e;font-family:'DM Sans',sans-serif;font-size:20px;font-weight:700;outline:none;text-align:center;cursor:pointer"><option value="00">00</option><option value="05">05</option><option value="10">10</option><option value="15">15</option><option value="20">20</option><option value="25">25</option><option value="30">30</option><option value="35">35</option><option value="40">40</option><option value="45">45</option><option value="50">50</option><option value="55">55</option></select>
+              </div>
+            </div>
+            <div style="display:flex;align-items:center;gap:8px">
+              <div style="font-size:11px;color:#fff;font-weight:800;letter-spacing:.05em;min-width:36px;text-shadow:0 1px 2px rgba(0,0,0,.3)">TO</div>
+              <div style="display:flex;flex:1;gap:6px;align-items:center">
+                <select id="ql-th" style="min-width:58px;flex:1;padding:10px 6px;border-radius:8px;border:2px solid rgba(255,255,255,.6);background:#fff;color:#0d1f4e;font-family:'DM Sans',sans-serif;font-size:20px;font-weight:700;outline:none;text-align:center;cursor:pointer"><option value="00">00</option><option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option></select>
+                <span style="color:#fff;font-size:20px;font-weight:800;padding:0 2px">:</span>
+                <select id="ql-tm" style="min-width:58px;flex:1;padding:10px 6px;border-radius:8px;border:2px solid rgba(255,255,255,.6);background:#fff;color:#0d1f4e;font-family:'DM Sans',sans-serif;font-size:20px;font-weight:700;outline:none;text-align:center;cursor:pointer"><option value="00">00</option><option value="05">05</option><option value="10">10</option><option value="15">15</option><option value="20">20</option><option value="25">25</option><option value="30">30</option><option value="35">35</option><option value="40">40</option><option value="45">45</option><option value="50">50</option><option value="55">55</option></select>
+              </div>
+            </div>
+          </div>
+          <div style="display:flex;gap:7px;margin-bottom:.6rem;align-items:flex-end">
+            <div style="flex:2">
+              <div style="font-size:10px;color:rgba(255,255,255,.55);font-weight:600;margin-bottom:3px">NOTE (optional)</div>
+              <input id="ql-note" type="text" placeholder="Ward, agency..." maxlength="80" style="width:100%;padding:9px 10px;border-radius:6px;border:1.5px solid rgba(255,255,255,.2);background:rgba(255,255,255,.1);color:#fff;font-family:'DM Sans',sans-serif;font-size:13px;outline:none">
+            </div>
+            <div style="flex:1.3">
+              <div style="font-size:10px;color:rgba(255,255,255,.55);font-weight:600;margin-bottom:3px">DAY TYPE</div>
+              <select id="ql-daytype" style="width:100%;padding:9px 8px;border-radius:6px;border:1.5px solid rgba(255,255,255,.2);background:rgba(255,255,255,.1);color:#fff;font-family:'DM Sans',sans-serif;font-size:12px;outline:none;color-scheme:dark">
+                <option value="auto">Auto</option>
+                <option value="weekday">Weekday</option>
+                <option value="saturday">Saturday</option>
+                <option value="sunday">Sunday</option>
+                <option value="bankholiday">Bank Hol</option>
+              </select>
+            </div>
+          </div>
+          <button onclick="qlLog()" style="width:100%;padding:12px;border-radius:8px;border:none;background:#fff;color:var(--bank);font-family:'DM Sans',sans-serif;font-size:15px;font-weight:800;cursor:pointer">&#10003; Log Session</button>
+          <div id="ql-status" style="font-size:12px;color:rgba(255,255,255,.85);margin-top:.45rem;min-height:14px;text-align:center;font-weight:500"></div>
+        </div>
+        <input id="b-date" type="date" style="display:none">
+        <input id="b-from" type="time" style="display:none">
+        <input id="b-to" type="time" style="display:none">
+        <input id="b-daytype" style="display:none">
+        <input id="b-note" type="text" style="display:none">
+      </div>
+
+      <!-- Week summary hero -->
+      <div class="bhero">
+        <div class="bherolbl">This Week&#39;s Bank Hours</div>
+        <div class="bherorange" id="bank-range"></div>
+        <div class="bherohrs" id="bank-hrs">0h</div>
+        <div class="bherosub" id="bank-sess">0 sessions</div>
+        <div style="font-size:11px;opacity:.6;margin-top:.3rem" id="hdr-band">Band 2 · £12.92/hr</div>
+        <div class="bprogbar"><div class="bprogfill" id="bank-prog" style="width:0%"></div></div>
+      </div>
+
+      <!-- Salary toggle -->
+      <div class="sal-bar">
+        <div class="sal-bar-lbl">&#128274; Salary details</div>
+        <button class="sal-btn show-mode" id="sal-btn" onclick="toggleSal()">&#128065; Show Salary</button>
+      </div>
+      <div class="pay-locked" id="pay-locked">
+        <span class="pay-locked-icon">&#128274;</span>
+        Tap &#8220;Show Salary&#8221; to reveal pay details
+      </div>
+      <div id="pay-card" style="display:none">
+        <div class="paycard">
+          <div class="payctitle">Approx Pay &#8212; This Week</div>
+          <div style="font-size:11px;color:var(--text3);margin-bottom:.6rem">&#8505; Estimated &#8212; actual pay may differ slightly</div>
+          <div class="payrow"><div class="payrlbl">Normal hours (6am&#8211;8pm)<small id="p-nh"></small></div><div class="payval" id="p-na">&#163;0.00</div></div>
+          <div class="payrow"><div class="payrlbl">Night / Saturday<small id="p-uh"></small></div><div class="payval" id="p-ua">&#163;0.00</div></div>
+          <div class="payrow" id="p-sun-row" style="display:none"><div class="payrlbl">Sunday / Bank Holiday<small id="p-suh"></small></div><div class="payval" id="p-sua" style="color:#b45309">&#163;0.00</div></div>
+          <div class="payrow"><div class="payrlbl">Gross pay</div><div class="payval" id="p-gross">&#163;0.00</div></div>
+          <div class="payrow"><div class="payrlbl">Income tax (20%)<small>Basic rate &#8212; bank/extra work</small></div><div class="payval neg" id="p-tax">&#8722;&#163;0.00</div></div>
+          <div class="payrow"><div class="payrlbl">National Insurance (8%)<small>Above &#163;242/wk threshold</small></div><div class="payval neg" id="p-ni">&#8722;&#163;0.00</div></div>
+          <div class="paytotal"><div class="paytlbl">Approx take-home</div><div class="paytval" id="p-net">&#163;0.00</div></div>
+        </div>
+      </div>
+
+      <div class="mini-stats">
+        <div class="mstat"><div class="mstatn" id="ms-today">0h</div><div class="mstatl">Today</div></div>
+        <div class="mstat"><div class="mstatn" id="ms-all">0h</div><div class="mstatl">All Time</div></div>
+        <div class="mstat"><div class="mstatn" id="ms-sess">0</div><div class="mstatl">Sessions</div></div>
+      </div>
+
+      <div id="bank-list"></div>
+      <div class="watermark">&#9749; Created by <strong>Anand</strong></div>
+    </div>
+
+    <!-- ALL WEEKS TAB -->
+    <div id="p-prevweeks" class="pane">
+      <div id="pw-selector"></div>
+      <div id="pw-detail"></div>
+      <div class="watermark">&#9749; Created by <strong>Anand</strong></div>
+    </div>
+
+    <!-- ANNUAL LEAVE TAB -->
+    <div id="p-al" class="pane">
+      <div class="al-hero">
+        <div class="al-hero-lbl">&#127334; Annual Leave Balance</div>
+        <div class="al-hero-sub">From 1 Apr 2026 &#8212; 12.07% of hours worked</div>
+        <div class="al-bal" id="al-bal">0.00 hrs</div>
+        <div class="al-bal-sub" id="al-bal-sub">0h 0m accrued &#8722; 0h 0m used</div>
+        <div class="al-pb"><div class="al-pbf" id="al-pbf" style="width:0%"></div></div>
+      </div>
+      <div class="al-stats">
+        <div class="alstat"><div class="alstatn" id="al-bankhrs">0h</div><div class="alstatl">Bank hrs (Apr 1+)</div></div>
+        <div class="alstat"><div class="alstatn" id="al-accrued">0h 0m</div><div class="alstatl">A/L accrued</div></div>
+        <div class="alstat"><div class="alstatn" id="al-taken">0h 0m</div><div class="alstatl">A/L used</div></div>
+      </div>
+      <div class="al-info"><strong>How it works:</strong> Every hour worked from 1 Apr 2026 accrues 12.07% A/L (NHS statutory: 5.6 weeks ÷ 46.4 working weeks). You can <strong>take A/L</strong> as time off or <strong>cash it in</strong> for pay (at your normal hourly rate). Both reduce your balance. Sick/other absences are recorded for reference only. <strong>Cash-in cut-off:</strong> requests before Sunday noon are paid that week's Friday; after Sunday noon, the following Friday.</div>
+      <div class="alform">
+        <div class="alform-title">&#10133; Log Annual Leave Taken</div>
+        <input id="al-date" type="date">
+        <div class="form-row">
+          <div style="flex:1"><div class="tlbl">Hours taken</div><input id="al-hours" type="number" min="0.5" max="12" step="0.5" placeholder="e.g. 7.5"></div>
+          <div style="flex:1"><div class="tlbl">Type</div>
+            <select id="al-type"><option value="annual">Take A/L (time off)</option><option value="cashin">Cash In A/L (paid)</option><option value="sick">Sick Leave</option><option value="other">Other</option></select>
+          </div>
+        </div>
+        <input id="al-note" type="text" placeholder="Notes (optional)..." maxlength="100">
+        <button class="abtn green" onclick="addAL()" style="width:100%;padding:11px">Log Leave</button>
+      </div>
+      <div id="al-list"></div>
+      <div class="watermark">&#9749; Created by <strong>Anand</strong></div>
+    </div>
+
+    <!-- OVERVIEW TAB -->
+    <div id="p-overview" class="pane">
+      <div class="mini-stats" style="grid-template-columns:repeat(2,1fr)">
+        <div class="mstat"><div class="mstatn" id="ov-wkhrs">0h</div><div class="mstatl">This week</div></div>
+        <div class="mstat"><div class="mstatn" id="ov-sess">0</div><div class="mstatl">All sessions</div></div>
+      </div>
+      <!-- AL summary -->
+      <div class="paycard" style="border-color:var(--green-border)">
+        <div class="payctitle" style="color:var(--green)">&#127334; Annual Leave</div>
+        <div class="payrow"><div class="payrlbl">Bank hrs (from 1 Apr 2026)</div><div class="payval" id="ov-al-bh">0h</div></div>
+        <div class="payrow"><div class="payrlbl">Hours accrued</div><div class="payval" style="color:var(--green)" id="ov-al-ac">0h 0m</div></div>
+        <div class="payrow"><div class="payrlbl">A/L taken (time off)</div><div class="payval neg" id="ov-al-tk">0h 0m</div></div>
+        <div class="payrow"><div class="payrlbl">A/L cashed in</div><div class="payval" style="color:var(--bank)" id="ov-al-ci">0h 0m</div></div>
+        <div class="payrow"><div class="payrlbl">Cash earned from A/L</div><div class="payval pay-sensitive" style="color:var(--bank)" id="ov-al-cash">~&#163;0.00</div></div>
+        <div class="paytotal" style="background:var(--green-bg)"><div class="paytlbl" style="color:var(--green)">Balance</div><div class="paytval" style="color:var(--green)" id="ov-al-bal">0h 0m</div></div>
+      </div>
+      <!-- Pay summary -->
+      <div class="paycard">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.6rem">
+          <div class="payctitle" style="margin-bottom:0">&#127974; This Week &#8212; Pay</div>
+          <button class="sal-btn show-mode" id="ov-sal-btn" onclick="toggleSal()" style="font-size:11px;padding:4px 10px">&#128065; Show</button>
+        </div>
+        <div class="payrow"><div class="payrlbl">Hours worked</div><div class="payval" id="ov-hrs">0h</div></div>
+        <div id="ov-pay-hidden" style="padding:8px 0;text-align:center;color:var(--text3);font-size:12px">&#128274; Tap &#8220;Show&#8221; to see salary</div>
+        <div id="ov-pay-reveal" style="display:none">
+          <div class="payrow"><div class="payrlbl">Gross pay</div><div class="payval" id="ov-gross">&#163;0.00</div></div>
+          <div class="paytotal"><div class="paytlbl">Approx take-home</div><div class="paytval" id="ov-net">&#163;0.00</div></div>
+        </div>
+      </div>
+      <div class="watermark">&#9749; Created by <strong>Anand</strong></div>
+    </div>
+
+    <!-- SETTINGS TAB -->
+    <div id="p-settings" class="pane">
+
+      <!-- Your Account -->
+      <div class="glbl">&#128100; Your Account</div>
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1rem;margin-bottom:1rem">
+        <div style="display:flex;align-items:center;justify-content:space-between">
+          <div>
+            <div style="font-size:16px;font-weight:600;color:var(--text)" id="st-username">-</div>
+            <div style="font-size:12px;color:var(--text3);margin-top:2px">Your name</div>
+          </div>
+          <button onclick="editName()" class="abtn blue" style="padding:8px 16px;font-size:13px">Edit</button>
+        </div>
+      </div>
+
+      <!-- NHS Band & Pay -->
+      <div class="glbl">&#127974; NHS Band &amp; Pay (2026/27)</div>
+      <div id="custom-rate-banner" style="display:none;background:#fff3cd;border:1.5px solid #ffc107;border-radius:var(--radius-sm);padding:9px 13px;margin-bottom:.65rem;font-size:12px;color:#856404;line-height:1.4">
+        &#9888;&#65039; <strong>Custom rate active</strong> — band rate below is for reference only. Your actual rate is shown in the rate cards. <span style="text-decoration:underline;cursor:pointer" onclick="clearCustomRate()">Clear custom rate</span>
+      </div>
+      <div style="background:var(--surface);border:1px solid var(--bank-light);border-radius:var(--radius);padding:1rem;margin-bottom:1rem">
+        <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:.75rem">
+          <div>
+            <div style="font-size:15px;font-weight:600;color:var(--bank)" id="st-band">Band 2</div>
+            <div style="font-size:12px;color:var(--text3);margin-top:2px" id="st-roles">HCA, domestic, porter</div>
+          </div>
+          <div style="text-align:right">
+            <div style="font-size:15px;font-weight:600;color:var(--text)" id="st-point">Flat rate</div>
+            <div style="font-size:12px;color:var(--text3);margin-top:2px" id="st-hr">£12.92/hr</div>
+          </div>
+        </div>
+        <div style="display:flex;gap:8px;margin-bottom:.75rem">
+          <div style="flex:1;background:var(--bank-bg);border-radius:var(--radius-sm);padding:10px;text-align:center">
+            <div style="font-size:11px;color:var(--text3);margin-bottom:3px;text-transform:uppercase;letter-spacing:.05em;font-weight:600">Normal rate</div>
+            <div style="font-family:'DM Serif Display',serif;font-size:1.2rem;color:var(--bank)" id="st-nr">£12.92/hr</div>
+            <div style="font-size:10px;color:var(--text3);margin-top:2px">6am – 8pm</div>
+          </div>
+          <div style="flex:1;background:#fff3f0;border-radius:var(--radius-sm);padding:10px;text-align:center">
+            <div style="font-size:11px;color:var(--text3);margin-bottom:3px;text-transform:uppercase;letter-spacing:.05em;font-weight:600">Unsocial rate</div>
+            <div style="font-family:'DM Serif Display',serif;font-size:1.2rem;color:var(--red)" id="st-ur">£18.22/hr</div>
+            <div style="font-size:10px;color:var(--text3);margin-top:2px" id="st-pct">+41% (8pm – 6am)</div>
+          </div>
+        </div>
+        <div style="display:flex;gap:8px">
+          <div style="flex:1">
+            <div class="tlbl">Change Band</div>
+            <select id="st-band-sel" onchange="stBandChanged()" style="width:100%;padding:9px 12px;border-radius:var(--radius-sm);border:1.5px solid var(--border);background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;font-size:13px;outline:none">
+              <option value="2">Band 2</option>
+              <option value="3">Band 3</option>
+              <option value="4">Band 4</option>
+              <option value="5">Band 5</option>
+              <option value="6">Band 6</option>
+              <option value="7">Band 7</option>
+              <option value="8a">Band 8a</option>
+              <option value="8b">Band 8b</option>
+              <option value="8c">Band 8c</option>
+              <option value="8d">Band 8d</option>
+              <option value="9">Band 9</option>
+            </select>
+          </div>
+          <div style="flex:1">
+            <div class="tlbl">Pay Point</div>
+            <select id="st-point-sel" style="width:100%;padding:9px 12px;border-radius:var(--radius-sm);border:1.5px solid var(--border);background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;font-size:13px;outline:none">
+              <option value="0">Flat rate — £12.92/hr</option>
+            </select>
+          </div>
+        </div>
+        <button class="abtn blue" onclick="saveBandFromSettings()" style="width:100%;padding:10px;margin-top:.65rem">Save Band &amp; Pay Point</button>
+
+        <!-- Custom Rate Override -->
+        <div style="margin-top:.85rem;padding-top:.85rem;border-top:1px solid var(--border)">
+          <div style="font-size:12px;font-weight:600;color:var(--text2);margin-bottom:.4rem;letter-spacing:.03em">&#9881; Custom Rate Override</div>
+          <div style="font-size:11px;color:var(--text3);margin-bottom:.6rem;line-height:1.5">Use this when NHS updates pay rates (usually each April). Overrides the band rate above. Leave blank to use the standard band rate.</div>
+          <div style="display:flex;gap:8px;align-items:flex-end">
+            <div style="flex:1">
+              <div class="tlbl">Custom hourly rate (£)</div>
+              <input id="st-custom-rate" type="number" min="8" max="100" step="0.01" placeholder="e.g. 13.34"
+                style="width:100%;padding:9px 12px;border-radius:var(--radius-sm);border:1.5px solid var(--border);background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;font-size:14px;outline:none">
+            </div>
+            <button class="abtn blue" onclick="saveCustomRate()" style="padding:10px 16px;white-space:nowrap">Apply</button>
+            <button onclick="clearCustomRate()" style="padding:10px 16px;border-radius:var(--radius-sm);border:1.5px solid var(--border2);background:transparent;font-family:'DM Sans',sans-serif;font-size:13px;cursor:pointer;color:var(--text3);white-space:nowrap">Clear</button>
+          </div>
+          <div id="st-custom-rate-status" style="font-size:12px;margin-top:.5rem;display:none"></div>
+        </div>
+      </div>
+
+      <!-- A/L Info -->
+      <div class="glbl">&#127334; Annual Leave Rules</div>
+      <div style="background:var(--green-bg);border:1px solid var(--green-border);border-radius:var(--radius);padding:1rem;margin-bottom:1rem;font-size:13px;color:#1a4a2a;line-height:1.6">
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:4px 0;border-bottom:1px solid var(--green-border);margin-bottom:6px">
+          <span>Accrual start date</span><strong>1 April 2026</strong>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:4px 0;border-bottom:1px solid var(--green-border);margin-bottom:6px">
+          <span>Rate</span><strong>12.07% of hours worked</strong>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:4px 0;border-bottom:1px solid var(--green-border);margin-bottom:6px">
+          <span>Use A/L as</span><strong>Time off OR cash in</strong>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:4px 0">
+          <span>What deducts balance?</span><strong>Take A/L + Cash in</strong>
+        </div>
+        <div style="font-size:11px;color:#2a5a3a;margin-top:.6rem">Cash-in pays at your normal hourly rate. Sick leave and other absences are recorded for reference only.</div>
+      </div>
+
+      <!-- Export & Backup -->
+      <div class="glbl">&#128229; Export &amp; Backup</div>
+
+      <!-- ⚠️ Browser clear warning -->
+      <div style="background:#fff3cd;border:1.5px solid #ffc107;border-radius:var(--radius-sm);padding:10px 13px;margin-bottom:.75rem;font-size:12px;color:#856404;line-height:1.5">
+        &#9888;&#65039; <strong>Important:</strong> Clearing browser data or "Clear all data" in your browser settings will delete all your sessions permanently. Export a backup regularly to protect your data.
+      </div>
+
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1rem;margin-bottom:1rem">
+        <div style="font-size:13px;color:var(--text2);margin-bottom:.85rem;line-height:1.5">Save a copy of all your data. If you ever clear your browser or switch phones, import the backup to restore everything instantly.</div>
+
+        <!-- JSON Backup — most important -->
+        <div style="background:var(--green-bg);border:1.5px solid var(--green-border);border-radius:var(--radius-sm);padding:.85rem;margin-bottom:.65rem">
+          <div style="font-size:14px;font-weight:700;color:var(--green);margin-bottom:3px">&#128190; Full Data Backup (JSON)</div>
+          <div style="font-size:11px;color:var(--text3);margin-bottom:.65rem">Everything — sessions, A/L, settings · One tap to save, one tap to restore</div>
+          <div style="display:flex;gap:8px">
+            <button class="abtn" onclick="exportJSON()" style="flex:1;padding:9px;font-size:13px;background:var(--green);color:#fff;border:none;border-radius:var(--radius-sm);font-family:'DM Sans',sans-serif;font-weight:700;cursor:pointer">&#11123; Export Backup</button>
+            <label style="flex:1;padding:9px;font-size:13px;background:var(--surface2);color:var(--text);border:1.5px solid var(--border2);border-radius:var(--radius-sm);font-family:'DM Sans',sans-serif;font-weight:600;cursor:pointer;text-align:center;display:flex;align-items:center;justify-content:center;gap:5px">
+              &#11121; Import Backup
+              <input type="file" accept=".json" onchange="importJSON(event)" style="display:none">
+            </label>
+          </div>
+          <div id="import-status" style="font-size:12px;margin-top:.5rem;display:none"></div>
+        </div>
+
+        <!-- PDF Export -->
+        <div style="background:var(--bank-bg);border:1px solid var(--bank-light);border-radius:var(--radius-sm);padding:.85rem;margin-bottom:.65rem">
+          <div style="font-size:14px;font-weight:600;color:var(--bank);margin-bottom:3px">&#128196; PDF Summary Report</div>
+          <div style="font-size:11px;color:var(--text3);margin-bottom:.65rem">Monthly breakdown · Perfect for mortgage &amp; tax records</div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap">
+            <select id="pdf-month-sel" style="flex:1;min-width:130px;padding:8px 10px;border-radius:var(--radius-sm);border:1.5px solid var(--border);background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;font-size:13px;outline:none"></select>
+            <button class="abtn blue" onclick="exportPDF()" style="padding:8px 18px;font-size:13px;white-space:nowrap">&#11123; PDF</button>
+          </div>
+        </div>
+
+        <!-- CSV Export -->
+        <div style="background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius-sm);padding:.85rem">
+          <div style="display:flex;align-items:center;justify-content:space-between">
+            <div>
+              <div style="font-size:14px;font-weight:600;color:var(--text)">&#128202; CSV Spreadsheet</div>
+              <div style="font-size:11px;color:var(--text3);margin-top:2px">All sessions · Opens in Excel or Google Sheets</div>
+            </div>
+            <button class="abtn" onclick="exportCSV()" style="padding:8px 18px;font-size:13px;background:var(--text);color:#fff;border:none;border-radius:var(--radius-sm);font-family:'DM Sans',sans-serif;font-weight:600;cursor:pointer;white-space:nowrap">&#11123; CSV</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Install instructions -->
+      <div class="glbl">&#128242; Install as App</div>
+
+      <!-- Chrome install button — shown automatically when app is installable -->
+      <div id="install-prompt-card" style="display:none;background:linear-gradient(135deg,#1a4fa8,#0d3278);border-radius:var(--radius);padding:1rem;margin-bottom:.75rem">
+        <div style="font-size:14px;font-weight:700;color:#fff;margin-bottom:.4rem">&#127881; Ready to install!</div>
+        <div style="font-size:12px;color:rgba(255,255,255,.75);margin-bottom:.75rem">Chrome detected your HTTPS URL — tap below to install as a home screen app.</div>
+        <button onclick="triggerInstall()" style="width:100%;padding:11px;border-radius:var(--radius-sm);border:none;background:#fff;color:var(--bank);font-family:'DM Sans',sans-serif;font-size:14px;font-weight:700;cursor:pointer">&#8659; Install App Now</button>
+      </div>
+
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1rem;margin-bottom:1rem">
+        <div style="font-size:13px;color:var(--text2);margin-bottom:.85rem;line-height:1.5">You have the HTTPS URL — just add it to your home screen once and it opens like a real app.</div>
+
+        <div style="background:#e8f5e9;border:1px solid #a5d6a7;border-radius:var(--radius-sm);padding:.85rem;margin-bottom:.65rem">
+          <div style="font-size:13px;font-weight:700;color:#2e7d32;margin-bottom:.6rem">&#129505; Android — Chrome</div>
+          <div style="display:flex;flex-direction:column;gap:7px">
+            <div style="font-size:12px;color:var(--text2);display:flex;gap:9px"><span style="font-weight:700;color:#2e7d32;min-width:18px">1.</span><span>Open your URL in <strong>Chrome</strong></span></div>
+            <div style="font-size:12px;color:var(--text2);display:flex;gap:9px"><span style="font-weight:700;color:#2e7d32;min-width:18px">2.</span><span>Tap <strong>&#8942; menu</strong> &#8594; <strong>"Add to Home screen"</strong></span></div>
+            <div style="font-size:12px;color:var(--text2);display:flex;gap:9px"><span style="font-weight:700;color:#2e7d32;min-width:18px">3.</span><span>Tap <strong>"Add"</strong> &#10003;</span></div>
+          </div>
+          <div style="margin-top:.55rem;font-size:11px;color:#2e7d32;background:rgba(46,125,50,.08);border-radius:4px;padding:5px 8px">
+            &#128161; If Chrome shows an <strong>"Install App"</strong> button above — tap that instead, even faster.
+          </div>
+        </div>
+
+        <div style="background:#e3f2fd;border:1px solid #90caf9;border-radius:var(--radius-sm);padding:.85rem">
+          <div style="font-size:13px;font-weight:700;color:#1565c0;margin-bottom:.6rem">&#63743; iPhone — Safari only</div>
+          <div style="display:flex;flex-direction:column;gap:7px">
+            <div style="font-size:12px;color:var(--text2);display:flex;gap:9px"><span style="font-weight:700;color:#1565c0;min-width:18px">1.</span><span>Open your URL in <strong>Safari</strong> (not Chrome)</span></div>
+            <div style="font-size:12px;color:var(--text2);display:flex;gap:9px"><span style="font-weight:700;color:#1565c0;min-width:18px">2.</span><span>Tap <strong>Share &#11014;</strong> &#8594; <strong>"Add to Home Screen"</strong></span></div>
+            <div style="font-size:12px;color:var(--text2);display:flex;gap:9px"><span style="font-weight:700;color:#1565c0;min-width:18px">3.</span><span>Tap <strong>"Add"</strong> &#10003;</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- App info -->
+      <div class="glbl">&#8505; App Info</div>
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1rem;margin-bottom:1rem;font-size:13px;color:var(--text2);line-height:1.7">
+        <div style="display:flex;justify-content:space-between"><span>App</span><span style="font-weight:500">Bank Work Tracker</span></div>
+        <div style="display:flex;justify-content:space-between"><span>Pay year</span><span style="font-weight:500">2026/27 England</span></div>
+        <div style="display:flex;justify-content:space-between"><span>Tax rate</span><span style="font-weight:500">20% basic rate</span></div>
+        <div style="display:flex;justify-content:space-between"><span>NI rate</span><span style="font-weight:500">8% above £242/wk</span></div>
+        <div style="display:flex;justify-content:space-between"><span>Pay day</span><span style="font-weight:500">Friday after week ends</span></div>
+        <div style="display:flex;justify-content:space-between"><span>Week</span><span style="font-weight:500">Monday – Sunday</span></div>
+      </div>
+
+      <div class="watermark">&#9749; Created by <strong>Anand</strong></div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+// Global error handler — shows error visibly instead of blank screen
+window.onerror=function(msg,src,line,col,err){
+  console.error('App error:',msg,'at',src,line);
+  // Only show error banner for serious errors, not minor ones
+  if(document.body&&msg&&!msg.includes('Script error')){
+    const existing=document.getElementById('_err_banner');
+    if(!existing){
+      const d=document.createElement('div');
+      d.id='_err_banner';
+      d.style.cssText='position:fixed;bottom:0;left:0;right:0;background:#c4521a;color:#fff;padding:10px 14px;font-size:12px;font-family:sans-serif;z-index:9999;line-height:1.4';
+      d.innerHTML='&#9888; App error: '+String(msg).slice(0,120)+'<br><small>Please refresh the page. If this keeps happening, try clearing browser cache.</small>';
+      d.onclick=function(){d.remove();};
+      document.body.appendChild(d);
+    }
+  }
+  return false;
+};
+// ── NHS BAND PAY DATA (2026/27 England, confirmed 3.3% rise from 1 Apr 2026) ──
+const NHS_BANDS = {
+  '2':  { label:'Band 2',  points:[{name:'Flat rate', hr:12.92}],                              nightSatPct:0.41, sunBHPct:0.83, roles:'HCA, receptionist, domestic, porter' },
+  '3':  { label:'Band 3',  points:[{name:'Entry',hr:13.20},{name:'Top',hr:14.10}],              nightSatPct:0.35, sunBHPct:0.69, roles:'CSW, therapy assistant, pharmacy assistant' },
+  '4':  { label:'Band 4',  points:[{name:'Entry',hr:14.55},{name:'Top',hr:15.97}],              nightSatPct:0.30, sunBHPct:0.60, roles:'Nursing associate, pharmacy technician' },
+  '5':  { label:'Band 5',  points:[{name:'Entry',hr:16.41},{name:'Mid',hr:18.13},{name:'Top',hr:19.98}], nightSatPct:0.30, sunBHPct:0.60, roles:'Nurse, midwife, paramedic, physio, OT' },
+  '6':  { label:'Band 6',  points:[{name:'Entry',hr:20.76},{name:'Mid',hr:21.71},{name:'Top',hr:23.99}], nightSatPct:0.30, sunBHPct:0.60, roles:'Junior sister, charge nurse, pharmacist' },
+  '7':  { label:'Band 7',  points:[{name:'Entry',hr:22.32},{name:'Mid',hr:24.07},{name:'Top',hr:25.90}], nightSatPct:0.30, sunBHPct:0.60, roles:'Ward sister, senior physio, senior midwife' },
+  '8a': { label:'Band 8a', points:[{name:'Entry',hr:27.13},{name:'Top',hr:30.13}],              nightSatPct:0.30, sunBHPct:0.60, roles:'Advanced nurse practitioner, senior manager' },
+  '8b': { label:'Band 8b', points:[{name:'Entry',hr:29.55},{name:'Top',hr:34.69}],              nightSatPct:0.30, sunBHPct:0.60, roles:'Head of nursing, senior specialist' },
+  '8c': { label:'Band 8c', points:[{name:'Entry',hr:35.75},{name:'Top',hr:41.45}],              nightSatPct:0.30, sunBHPct:0.60, roles:'Associate director, senior pharmacist' },
+  '8d': { label:'Band 8d', points:[{name:'Entry',hr:43.50},{name:'Top',hr:51.02}],              nightSatPct:0.30, sunBHPct:0.60, roles:'Director of nursing, executive director' },
+  '9':  { label:'Band 9',  points:[{name:'Entry',hr:53.77},{name:'Top',hr:66.37}],              nightSatPct:0.30, sunBHPct:0.60, roles:'Very senior manager, chief officer' }
+};
+
+const TR=0.20, NIR=0.08, NITH=242;
+const AL_START='2026-04-01', AL_RATE=0.1207; // 12.07% of hours worked (NHS statutory: 5.6wks ÷ 46.4 working wks)
+const MONTHS=['January','February','March','April','May','June','July','August','September','October','November','December'];
+const MS=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+const DS=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+
+// Dynamic pay rates — updated when user changes band/point
+let NR=12.92, UR=NR*1.41, NIGHT_SAT_PCT=0.41, SUN_BH_PCT=0.83;
+let userBand='2', userPoint=0;
+
+// ── STATE ──
+let bank=[],alLeave=[],userName='',salVisible=false,selPW=null;
+let customRate=0; // 0 = not set, use band rate
+
+// ── STORAGE ──
+function load(){
+  try{
+    bank=JSON.parse(localStorage.getItem('bwt_bank')||'[]');
+    alLeave=JSON.parse(localStorage.getItem('bwt_al')||'[]');
+    userName=localStorage.getItem('bwt_user')||'';
+    userBand=localStorage.getItem('bwt_band')||'2';
+    userPoint=parseInt(localStorage.getItem('bwt_point')||'0');
+    customRate=parseFloat(localStorage.getItem('bwt_custom_rate')||'0');
+    applyBandRates();
+  }catch(e){bank=[];alLeave=[];userName='';userBand='2';userPoint=0;customRate=0;}
+}
+function save(){
+  try{
+    localStorage.setItem('bwt_bank',JSON.stringify(bank));
+    localStorage.setItem('bwt_al',JSON.stringify(alLeave));
+    localStorage.setItem('bwt_user',userName);
+    localStorage.setItem('bwt_band',userBand);
+    localStorage.setItem('bwt_point',userPoint);
+    localStorage.setItem('bwt_custom_rate',customRate||0);
+  }catch(e){}
+  // Auto-sync to Firebase if signed in (debounced)
+  if(fbUser&&fbDb){
+    clearTimeout(window._fbSyncTimer);
+    window._fbSyncTimer=setTimeout(fbSyncNow,2000);
+  }
+}
+function applyBandRates(){
+  const bd=NHS_BANDS[userBand];
+  if(!bd)return;
+  const pt=bd.points[Math.min(userPoint,bd.points.length-1)];
+  // Custom rate overrides band rate if set
+  NR = (customRate>0) ? customRate : pt.hr;
+  NIGHT_SAT_PCT=bd.nightSatPct;
+  SUN_BH_PCT=bd.sunBHPct;
+  UR=NR*(1+NIGHT_SAT_PCT);
+}
+
+// ── CUSTOM RATE ──
+function saveCustomRate(){
+  const val=parseFloat(document.getElementById('st-custom-rate').value);
+  const status=document.getElementById('st-custom-rate-status');
+  if(!val||val<8||val>150){
+    status.style.display='block';
+    status.style.color='var(--red)';
+    status.textContent='Please enter a valid hourly rate between £8 and £150.';
+    return;
+  }
+  customRate=val;
+  save();applyBandRates();
+  renderBank();renderOv();updateBandDisplay();renderSettings();
+  status.style.display='block';
+  status.style.color='var(--green)';
+  const nsRate=(val*(1+NIGHT_SAT_PCT)).toFixed(2);
+  const sunRate=(val*(1+SUN_BH_PCT)).toFixed(2);
+  status.textContent='\u2705 Custom rate \u00a3'+val.toFixed(2)+'/hr applied! Night/Sat: \u00a3'+nsRate+'/hr \u00b7 Sun/BH: \u00a3'+sunRate+'/hr';
+}
+function clearCustomRate(){
+  customRate=0;
+  document.getElementById('st-custom-rate').value='';
+  save();applyBandRates();
+  renderBank();renderOv();updateBandDisplay();renderSettings();
+  const status=document.getElementById('st-custom-rate-status');
+  status.style.display='block';
+  status.style.color='var(--text3)';
+  status.textContent='Custom rate cleared. Using standard band rate: \u00a3'+NR.toFixed(2)+'/hr';
+}
+
+// ── SETUP — multi-step flow ──
+function setupBandChanged(){
+  const band=document.getElementById('setup-band').value;
+  const ppSel=document.getElementById('setup-point');
+  ppSel.innerHTML=NHS_BANDS[band].points.map((p,i)=>'<option value="'+i+'">'+p.name+' \u2014 \u00a3'+p.hr.toFixed(2)+'/hr</option>').join('');
+}
+function setStepDots(step){
+  [1,2,3].forEach(i=>{
+    const d=document.getElementById('sdot-'+i);
+    if(d)d.className='setup-step-dot'+(i<=step?' active':'');
+  });
+}
+function setupNext1(){
+  const n=document.getElementById('setup-name').value.trim();
+  if(!n){document.getElementById('setup-name').focus();return;}
+  document.getElementById('setup-step-1').style.display='none';
+  document.getElementById('setup-step-2').style.display='block';
+  setStepDots(2);
+}
+function setupBack1(){
+  document.getElementById('setup-step-2').style.display='none';
+  document.getElementById('setup-step-1').style.display='block';
+  setStepDots(1);
+}
+function setupNext2(){
+  const name=document.getElementById('setup-name').value.trim();
+  const band=document.getElementById('setup-band').value;
+  const ptIdx=parseInt(document.getElementById('setup-point').value||'0');
+  const bd=NHS_BANDS[band];
+  const pt=bd.points[Math.min(ptIdx,bd.points.length-1)];
+  const unsocialRate=pt.hr*(1+bd.nightSatPct);
+  document.getElementById('confirm-name').textContent=name;
+  document.getElementById('confirm-name2').textContent=name;
+  document.getElementById('confirm-band').textContent=bd.label;
+  document.getElementById('confirm-point').textContent=pt.name+' \u2014 \u00a3'+pt.hr.toFixed(2)+'/hr';
+  document.getElementById('confirm-nr').textContent='\u00a3'+pt.hr.toFixed(2)+'/hr';
+  document.getElementById('confirm-ur').textContent='\u00a3'+unsocialRate.toFixed(2)+'/hr (+'+Math.round(bd.nightSatPct*100)+'% nights/Sat)';
+  document.getElementById('setup-step-2').style.display='none';
+  document.getElementById('setup-step-3').style.display='block';
+  setStepDots(3);
+}
+function setupBack2(){
+  document.getElementById('setup-step-3').style.display='none';
+  document.getElementById('setup-step-2').style.display='block';
+  setStepDots(2);
+}
+function saveUser(){
+  const n=document.getElementById('setup-name').value.trim();
+  if(!n){document.getElementById('setup-name').focus();return;}
+  userName=n;
+  userBand=document.getElementById('setup-band').value;
+  userPoint=parseInt(document.getElementById('setup-point').value||'0');
+  applyBandRates();save();
+  document.getElementById('setup-screen').classList.add('hidden');
+  initApp();
+}
+function changeName(){
+  const n=prompt('Enter your name:',userName);
+  if(n&&n.trim()){userName=n.trim();save();updateHeader();}
+}
+// ── SETTINGS TAB ──
+function renderSettings(){
+  const bd=NHS_BANDS[userBand];
+  const pt=bd.points[Math.min(userPoint,bd.points.length-1)];
+  // Name
+  document.getElementById('st-username').textContent=userName;
+  // Band info cards
+  document.getElementById('st-band').textContent=bd.label;
+  document.getElementById('st-roles').textContent=bd.roles;
+  document.getElementById('st-point').textContent=pt.name;
+  document.getElementById('st-hr').textContent='\u00a3'+pt.hr.toFixed(2)+'/hr';
+  document.getElementById('st-nr').textContent='\u00a3'+NR.toFixed(2)+'/hr';
+  document.getElementById('st-ur').textContent='\u00a3'+(NR*(1+NIGHT_SAT_PCT)).toFixed(2)+'/hr';
+  document.getElementById('st-pct').textContent='+'+Math.round(NIGHT_SAT_PCT*100)+'% (8pm \u2013 6am)';
+  // Populate selects
+  const bs=document.getElementById('st-band-sel');
+  bs.value=userBand;
+  stBandChanged(false); // populate pay points without resetting selection
+  document.getElementById('st-point-sel').value=userPoint;
+  // Show/hide custom rate active banner
+  const banner=document.getElementById('custom-rate-banner');
+  if(banner)banner.style.display=customRate>0?'block':'none';
+  populatePDFMonthSelector();
+  // Show custom rate if set
+  const crInput=document.getElementById('st-custom-rate');
+  const crStatus=document.getElementById('st-custom-rate-status');
+  if(crInput){crInput.value=customRate>0?customRate:'';}
+  if(crStatus&&customRate>0){
+    crStatus.style.display='block';crStatus.style.color='var(--bank)';
+    crStatus.textContent='\u26a0\ufe0f Custom rate active: \u00a3'+customRate.toFixed(2)+'/hr (overrides band rate). Night/Sat: \u00a3'+(customRate*(1+NIGHT_SAT_PCT)).toFixed(2)+' \u00b7 Sun/BH: \u00a3'+(customRate*(1+SUN_BH_PCT)).toFixed(2);
+  } else if(crStatus){crStatus.style.display='none';}
+}
+function stBandChanged(reset=true){
+  const band=document.getElementById('st-band-sel').value;
+  const ppSel=document.getElementById('st-point-sel');
+  const saved=ppSel.value;
+  ppSel.innerHTML=NHS_BANDS[band].points.map((p,i)=>'<option value="'+i+'">'+p.name+' \u2014 \u00a3'+p.hr.toFixed(2)+'/hr</option>').join('');
+  if(!reset)ppSel.value=saved; // keep existing selection if just populating
+  // Live preview
+  const bd=NHS_BANDS[band];
+  const ptIdx=parseInt(ppSel.value||'0');
+  const pt=bd.points[Math.min(ptIdx,bd.points.length-1)];
+  const ur=pt.hr*(1+bd.nightSatPct);
+  document.getElementById('st-band').textContent=bd.label;
+  document.getElementById('st-roles').textContent=bd.roles;
+  document.getElementById('st-point').textContent=pt.name;
+  document.getElementById('st-hr').textContent='\u00a3'+pt.hr.toFixed(2)+'/hr';
+  document.getElementById('st-nr').textContent='\u00a3'+pt.hr.toFixed(2)+'/hr';
+  document.getElementById('st-ur').textContent='\u00a3'+ur.toFixed(2)+'/hr';
+  document.getElementById('st-pct').textContent='+'+Math.round(bd.nightSatPct*100)+'% (8pm \u2013 6am)';
+  // Update table highlight
+}
+function saveBandFromSettings(){
+  userBand=document.getElementById('st-band-sel').value;
+  userPoint=parseInt(document.getElementById('st-point-sel').value||'0');
+  applyBandRates();save();
+  renderSettings();
+  updateBandDisplay();
+  renderBank();renderOv();
+  // Confirmation — tell user what rate is actually active
+  const btn=document.querySelector('[onclick="saveBandFromSettings()"]');
+  if(btn){
+    const orig=btn.innerHTML;
+    if(customRate>0){
+      btn.innerHTML='\u2705 Band saved \u2014 but custom rate \u00a3'+customRate.toFixed(2)+' still active';
+      btn.style.background='var(--bank)';
+    } else {
+      btn.innerHTML='\u2705 Saved! Using \u00a3'+NR.toFixed(2)+'/hr';
+      btn.style.background='var(--green)';
+    }
+    setTimeout(()=>{btn.innerHTML=orig;btn.style.background='';},2500);
+  }
+}
+function editName(){
+  const n=prompt('Enter your name:',userName);
+  if(n&&n.trim()){
+    userName=n.trim();save();
+    document.getElementById('st-username').textContent=userName;
+    updateHeader();
+  }
+}
+function updateBandDisplay(){
+  const bd=NHS_BANDS[userBand];
+  const pt=bd.points[Math.min(userPoint,bd.points.length-1)];
+  const txt=bd.label+' \u00b7 '+pt.name+' \u00b7 \u00a3'+NR.toFixed(2)+'/hr';
+  const hb=document.getElementById('hdr-band');if(hb)hb.textContent=txt;
+}
+// Keep old function names working for any other references
+function changeBand(){sw('settings',document.querySelector('[onclick*="settings"]'));}
+function openSetupForEdit(){sw('settings',document.querySelector('[onclick*="settings"]'));}
+document.getElementById('setup-name').addEventListener('keydown',e=>{if(e.key==='Enter')setupNext1();});
+// Auto-set day type from date
+document.getElementById('b-date').addEventListener('change',function(){
+  const d=new Date(this.value+'T00:00:00'),day=d.getDay();
+  const sel=document.getElementById('b-daytype');
+  if(day===0)sel.value='sunday';
+  else if(day===6)sel.value='saturday';
+  else sel.value='weekday';
+});
+
+// ── INIT ──
+function initApp(){
+  updateHeader();
+  if(!document.getElementById('b-date').value)document.getElementById('b-date').value=tod();
+  if(!document.getElementById('al-date').value)document.getElementById('al-date').value=tod();
+  updateBandDisplay();
+  qlInit();
+  renderBank();renderAL();renderPW();renderOv();
+}
+function updateHeader(){
+  const now=new Date(),h=now.getHours();
+  const g=h<12?'Good morning':h<17?'Good afternoon':'Good evening';
+  document.getElementById('hdr-user').textContent=g+', '+userName+'!';
+  document.getElementById('hdr-date').textContent=DS[now.getDay()]+', '+now.getDate()+' '+MS[now.getMonth()]+' '+now.getFullYear();
+}
+
+// ── PWA ──
+if('serviceWorker' in navigator){try{const b=new Blob(['self.addEventListener("install",e=>self.skipWaiting());self.addEventListener("activate",e=>clients.claim());self.addEventListener("fetch",e=>{if(e.request.method!=="GET")return;e.respondWith(fetch(e.request).catch(()=>caches.match(e.request)));});'],{type:'application/javascript'});navigator.serviceWorker.register(URL.createObjectURL(b));}catch(e){}}
+
+// ── HELPERS ──
+function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+function gbp(n){return '&#163;'+n.toFixed(2);}
+function fmins(m){if(!m||m===0)return '0h';const h=Math.floor(m/60),min=m%60;if(h===0)return min+'m';if(min===0)return h+'h';return h+'h '+min+'m';}
+// Display annual leave hours in a clear h/m format (not confusing decimals)
+function fminsAL(hrs){
+  if(!hrs||hrs===0)return '0h 0m';
+  const totalMins=hrs*60;
+  const h=Math.floor(totalMins/60);
+  const m=Math.round(totalMins%60);
+  if(h===0)return m+'m';
+  if(m===0)return h+'h';
+  return h+'h '+m+'m';
+}
+function tod(){const d=new Date();return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');}
+
+// ── PAY ENGINE (AfC Section 2 — Weekday/Saturday/Sunday/Bank Holiday) ──
+function splitShift(from,to,dayType){
+  function toM(t){const[h,m]=t.split(':').map(Number);return h*60+m;}
+  let s=toM(from),e=toM(to);
+  if(e<=s)e+=1440;
+  let nm=0,nsatMins=0,sunBHMins=0,cur=s;
+  while(cur<e){
+    const db=Math.floor(cur/1440)*1440,be=Math.min(e,db+1440);
+    const nextDay=Math.floor(cur/1440)>0;
+    let bd2=dayType||'weekday';
+    if(nextDay){
+      if(bd2==='saturday')bd2='sunday';
+      else if(bd2==='sunday'||bd2==='bankholiday')bd2='weekday';
+      else bd2='weekday';
+    }
+    if(bd2==='sunday'||bd2==='bankholiday'){
+      sunBHMins+=be-cur;cur=be;
+    } else if(bd2==='saturday'){
+      nsatMins+=be-cur;cur=be;
+    } else {
+      const ns=db+360,ne=db+1200;
+      if(cur<ns){const end=Math.min(ns,be);nsatMins+=end-cur;cur=end;}
+      if(cur<ne&&cur<be){const end=Math.min(ne,be);nm+=end-cur;cur=end;}
+      if(cur<be){nsatMins+=be-cur;cur=be;}
+    }
+  }
+  return{nm,nsatMins,sunBHMins,tm:nm+nsatMins+sunBHMins};
+}
+function calcPay(nm,nsatMins,sunBHMins){
+  const np=(nm/60)*NR;
+  const nsp=(nsatMins/60)*(NR*(1+NIGHT_SAT_PCT));
+  const sbp=(sunBHMins/60)*(NR*(1+SUN_BH_PCT));
+  const g=np+nsp+sbp;
+  return{np,nsp,sbp,g};
+}
+function calcTax(g){const tax=g*TR,ni=Math.max(0,g-NITH)*NIR,net=g-tax-ni;return{tax,ni,net};}
+
+// ── WEEK UTILS (Mon–Sun) ──
+function wkBounds(off){
+  const now=new Date(),day=now.getDay();
+  // Days since Monday: Sun=6, Mon=0, Tue=1, ...
+  const daysSinceMon=(day===0)?6:day-1;
+  const s=new Date(now);
+  s.setDate(now.getDate()-daysSinceMon+off*7);s.setHours(0,0,0,0);
+  const e=new Date(s);e.setDate(s.getDate()+6);e.setHours(23,59,59,999);
+  return{s,e};
+}
+function wkRange(s,e){return s.getDate()+' '+MS[s.getMonth()]+' &#8211; '+e.getDate()+' '+MS[e.getMonth()]+' '+e.getFullYear();}
+function wkEntries(s,e){return bank.filter(x=>{const d=new Date(x.date+'T00:00:00');return d>=s&&d<=e;});}
+// Pay date: next Friday after the Sunday week-end (timezone-safe)
+function payDate(weekEndSun){
+  // weekEndSun is the end of week (Sunday) date object
+  // We just need to add 5 days to get to Friday, using local date arithmetic
+  const d=new Date(weekEndSun);
+  d.setHours(12,0,0,0); // use midday to avoid DST/timezone edge cases
+  d.setDate(d.getDate()+5);
+  return d;
+}
+function fmtPayDate(d){return ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'][d.getDay()]+' '+d.getDate()+' '+MS[d.getMonth()]+' '+d.getFullYear();}
+
+// ── SALARY TOGGLE ──
+function toggleSal(){
+  salVisible=!salVisible;
+  applySal();
+}
+function applySal(){
+  // Bank tab
+  const btn=document.getElementById('sal-btn');
+  if(btn){
+    btn.innerHTML=salVisible?'&#128274; Hide Salary':'&#128065; Show Salary';
+    btn.className='sal-btn '+(salVisible?'hide-mode':'show-mode');
+    document.getElementById('pay-locked').style.display=salVisible?'none':'block';
+    document.getElementById('pay-card').style.display=salVisible?'block':'none';
+  }
+  // Overview tab
+  const ob=document.getElementById('ov-sal-btn');
+  if(ob){
+    ob.innerHTML=salVisible?'&#128274; Hide':'&#128065; Show';
+    ob.className='sal-btn '+(salVisible?'hide-mode':'show-mode');
+    document.getElementById('ov-pay-hidden').style.display=salVisible?'none':'block';
+    document.getElementById('ov-pay-reveal').style.display=salVisible?'block':'none';
+  }
+  // All weeks pay sections
+  document.querySelectorAll('.pw-pay-section').forEach(el=>{
+    el.classList.toggle('blurred',!salVisible);
+  });
+  // Session pay amounts
+  document.querySelectorAll('.pay-sensitive').forEach(el=>{
+    el.classList.toggle('blurred',!salVisible);
+  });
+}
+
+// ── NAV ──
+function sw(p,el){
+  document.querySelectorAll('.pane').forEach(x=>x.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(x=>x.classList.remove('active'));
+  document.getElementById('p-'+p).classList.add('active');
+  el.classList.add('active');
+  if(p==='bank')renderBank();
+  if(p==='overview')renderOv();
+  if(p==='prevweeks')renderPW();
+  if(p==='al')renderAL();
+  if(p==='settings')renderSettings();
+}
+
+// ── BANK WORK ──
+function addBank(){
+  const dv=document.getElementById('b-date').value;
+  const fv=document.getElementById('b-from').value;
+  const tv=document.getElementById('b-to').value;
+  const nv=document.getElementById('b-note').value.trim();
+  const dtype=document.getElementById('b-daytype').value;
+  if(!dv||!fv||!tv){alert('Please fill in date, from and to times.');return;}
+  const sp=splitShift(fv,tv,dtype);
+  if(sp.tm<=0){alert('Please check your times.');return;}
+
+  // ── Duplicate check ──
+  const dup=bank.find(x=>x.date===dv&&x.from===fv&&x.to===tv);
+  if(dup){
+    const status=document.getElementById('ql-status');
+    if(status){
+      status.style.color='#ffcc00';
+      status.textContent='\u26a0\ufe0f Duplicate — you already logged '+fv+'\u2013'+tv+' on this date. Not saved.';
+      setTimeout(()=>{status.textContent='';status.style.color='rgba(255,255,255,.85)';},4000);
+    }
+    return;
+  }
+
+  const p=calcPay(sp.nm,sp.nsatMins,sp.sunBHMins);
+  bank.unshift({id:Date.now(),date:dv,from:fv,to:tv,note:nv,dayType:dtype,
+    nm:sp.nm,nsatMins:sp.nsatMins,sunBHMins:sp.sunBHMins,tm:sp.tm,
+    np:p.np,nsp:p.nsp,sbp:p.sbp,g:p.g});
+  document.getElementById('b-from').value='';
+  document.getElementById('b-to').value='';
+  document.getElementById('b-note').value='';
+  save();renderBank();renderPW();
+}
+function delBank(id){if(!confirm('Delete this session?'))return;bank=bank.filter(x=>x.id!==id);save();renderBank();renderPW();}
+function delBankPW(id){
+  if(!confirm('Delete this session?'))return;
+  bank=bank.filter(x=>x.id!==id);
+  save();renderBank();renderPW();
+  // renderPW re-selects the week and re-renders detail automatically
+}
+
+function renderBank(){
+  const{s,e}=wkBounds(0),we=wkEntries(s,e);
+  // Backward compat: old entries used nm/um, new use nm/nsatMins/sunBHMins
+  const wnm=we.reduce((a,x)=>a+(x.nm||0),0);
+  const wnsatMins=we.reduce((a,x)=>a+(x.nsatMins!==undefined?x.nsatMins:(x.um||0)),0);
+  const wsunBHMins=we.reduce((a,x)=>a+(x.sunBHMins||0),0);
+  const wtm=we.reduce((a,x)=>a+x.tm,0);
+  const wg=we.reduce((a,x)=>a+x.g,0);
+  const{tax,ni,net}=calcTax(wg);
+  const wnp=we.reduce((a,x)=>a+(x.np||0),0);
+  const wnsp=we.reduce((a,x)=>a+(x.nsp||(x.up||0)),0);
+  const wsbp=we.reduce((a,x)=>a+(x.sbp||0),0);
+  const tdM=bank.filter(x=>x.date===tod()).reduce((a,x)=>a+x.tm,0);
+  const allM=bank.reduce((a,x)=>a+x.tm,0);
+
+  document.getElementById('bank-range').innerHTML=wkRange(s,e);
+  document.getElementById('bank-hrs').textContent=fmins(wtm);
+  const pd=payDate(e);
+  document.getElementById('bank-sess').textContent=we.length+' session'+(we.length!==1?'s':'')+' \u00b7 Pay: '+fmtPayDate(pd);
+  document.getElementById('bank-prog').style.width=Math.min(100,Math.round(wtm/(40*60)*100))+'%';
+
+  document.getElementById('p-nh').textContent=fmins(wnm)+' x \u00a3'+NR.toFixed(2)+'/hr';
+  document.getElementById('p-na').innerHTML='~'+gbp(wnp);
+  document.getElementById('p-uh').textContent=fmins(wnsatMins)+' x \u00a3'+(NR*(1+NIGHT_SAT_PCT)).toFixed(2)+'/hr (+'+Math.round(NIGHT_SAT_PCT*100)+'%)';
+  document.getElementById('p-ua').innerHTML='~'+gbp(wnsp);
+  // Sun/BH row — update label dynamically
+  const sunRow=document.getElementById('p-sun-row');
+  if(sunRow)sunRow.style.display=wsunBHMins>0?'flex':'none';
+  const sunHrs=document.getElementById('p-suh');if(sunHrs)sunHrs.textContent=fmins(wsunBHMins)+' x \u00a3'+(NR*(1+SUN_BH_PCT)).toFixed(2)+'/hr (+'+Math.round(SUN_BH_PCT*100)+'%)';
+  const sunAmt=document.getElementById('p-sua');if(sunAmt)sunAmt.innerHTML='~'+gbp(wsbp);
+  document.getElementById('p-gross').innerHTML='~'+gbp(wg);
+  document.getElementById('p-tax').innerHTML='~\u2212'+gbp(tax);
+  document.getElementById('p-ni').innerHTML='~\u2212'+gbp(ni);
+  document.getElementById('p-net').innerHTML='~'+gbp(net);
+
+  document.getElementById('ms-today').textContent=fmins(tdM);
+  document.getElementById('ms-all').textContent=fmins(allM);
+  document.getElementById('ms-sess').textContent=bank.length;
+
+  // Auto-set day type to today's day
+  if(!document.getElementById('b-date').value){
+    document.getElementById('b-date').value=tod();
+    const today=new Date();const day=today.getDay();
+    const dtSel=document.getElementById('b-daytype');
+    if(dtSel){if(day===0)dtSel.value='sunday';else if(day===6)dtSel.value='saturday';else dtSel.value='weekday';}
+  }
+
+  const lel=document.getElementById('bank-list');
+  if(!we.length){lel.innerHTML='<div class="empty"><span class="emptyicon">&#127974;</span>No sessions this week yet</div>';applySal();return;}
+
+  const bd={};
+  we.forEach(x=>{if(!bd[x.date])bd[x.date]=[];bd[x.date].push(x);});
+  let h='<div class="glbl">This week\'s sessions</div>';
+  Object.keys(bd).sort((a,b)=>b.localeCompare(a)).forEach(date=>{
+    const d=new Date(date+'T00:00:00');
+    const dm=bd[date].reduce((a,x)=>a+x.tm,0);
+    const dg=bd[date].reduce((a,x)=>a+x.g,0);
+    h+='<div style="font-size:11px;font-weight:700;color:var(--text3);margin:.75rem 0 .4rem;text-transform:uppercase;letter-spacing:.06em">';
+    h+=DS[d.getDay()]+', '+d.getDate()+' '+MS[d.getMonth()];
+    h+=' <span style="color:var(--bank)">'+fmins(dm)+'</span>';
+    h+=' <span class="pay-sensitive" style="color:var(--bank)">\u00b7 '+gbp(dg)+' gross</span></div>';
+    bd[date].forEach(x=>{
+      const nsM=x.nsatMins!==undefined?x.nsatMins:(x.um||0);
+      const sbM=x.sunBHMins||0;
+      const dtype=x.dayType||'weekday';
+      const dtLabel={'weekday':'Weekday','saturday':'Saturday','sunday':'Sunday','bankholiday':'Bank Holiday'}[dtype]||dtype;
+      h+='<div class="bentry"><div class="bentryrow">';
+      h+='<div class="bentryicon">&#127974;</div>';
+      h+='<div class="bentrybody">';
+      h+='<div class="bentryhrs">'+fmins(x.tm)+'&nbsp;<span class="pay-sensitive" style="font-size:12px;color:var(--bank);font-weight:600">'+gbp(x.g)+' gross</span></div>';
+      h+='<div class="bentrydet">'+x.from+' \u2192 '+x.to+' \u00b7 <em>'+dtLabel+'</em>'+(x.note?' \u00b7 '+esc(x.note):'')+'</div>';
+      h+='<div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:3px">';
+      if(x.nm>0)h+='<span style="color:var(--green);font-size:11px">\u2600 '+fmins(x.nm)+' normal</span>';
+      if(nsM>0)h+='<span style="color:var(--red);font-size:11px">\u{1F319} '+fmins(nsM)+' night/Sat</span>';
+      if(sbM>0)h+='<span style="background:#fff3e0;color:#b45309;font-size:11px;padding:1px 5px;border-radius:4px">\u2600\uFE0F\u2609 '+fmins(sbM)+' Sun/BH</span>';
+      h+='</div></div>';
+      h+='<button class="del" onclick="delBank('+x.id+')">&#215;</button>';
+      h+='</div></div>';
+    });
+  });
+  lel.innerHTML=h;
+  applySal();
+}
+
+// ── ALL WEEKS ──
+function renderPW(){
+  const wm={};
+  bank.forEach(x=>{
+    const d=new Date(x.date+'T00:00:00'),day=d.getDay();
+    const daysSinceMon=(day===0)?6:day-1;
+    const mon=new Date(d);mon.setDate(d.getDate()-daysSinceMon);mon.setHours(0,0,0,0);
+    const k=mon.toISOString().slice(0,10);
+    if(!wm[k])wm[k]={start:new Date(mon),entries:[]};
+    wm[k].entries.push(x);
+  });
+  const{s:cs}=wkBounds(0),ck=cs.toISOString().slice(0,10);
+  const keys=Object.keys(wm).sort((a,b)=>b.localeCompare(a));
+  if(!keys.length){
+    document.getElementById('pw-selector').innerHTML='<div class="empty"><span class="emptyicon">&#128203;</span>No sessions logged yet</div>';
+    document.getElementById('pw-detail').innerHTML='';
+    return;
+  }
+  if(!selPW||!wm[selPW])selPW=keys[0];
+
+  // Group weeks by month
+  const mm={};
+  keys.forEach(k=>{
+    const mk=k.slice(0,7); // 'YYYY-MM'
+    if(!mm[mk])mm[mk]=[];
+    mm[mk].push(k);
+  });
+  const mkeys=Object.keys(mm).sort((a,b)=>b.localeCompare(a));
+  const curMonth=ck.slice(0,7);
+
+  let sh='<div class="glbl">All weeks ('+keys.length+' across '+mkeys.length+' month'+(mkeys.length!==1?'s':'')+')</div>';
+
+  mkeys.forEach(mk=>{
+    const d0=new Date(mk+'-01');
+    const moLabel=MONTHS[d0.getMonth()]+' '+d0.getFullYear();
+    const isCurrentMo=mk===curMonth;
+    // Month totals
+    const moKeys=mm[mk];
+    const moSessions=moKeys.reduce((a,k)=>a+wm[k].entries.length,0);
+    const moMins=moKeys.reduce((a,k)=>a+wm[k].entries.reduce((b,x)=>b+x.tm,0),0);
+    const moGross=moKeys.reduce((a,k)=>a+wm[k].entries.reduce((b,x)=>b+x.g,0),0);
+    const{net:moNet}=calcTax(moGross);
+
+    sh+='<details class="mo-accordion"'+(isCurrentMo?' open':'')+' id="mo-'+mk+'">';
+    sh+='<summary class="mo-summary">';
+    sh+='<div><div class="mo-title">'+moLabel+(isCurrentMo?' <span class="cur-badge">current</span>':'')+'</div>';
+    sh+='<div class="mo-meta">'+moSessions+' session'+(moSessions!==1?'s':'')+' &middot; '+fmins(moMins)+'</div></div>';
+    sh+='<div class="mo-right"><div class="mo-total pay-sensitive">~'+gbp(moNet)+'</div><div style="font-size:10px;color:var(--text3)">take-home</div></div>';
+    sh+='<span class="mo-arrow">&#9660;</span>';
+    sh+='</summary>';
+
+    // Weeks inside this month
+    moKeys.forEach(k=>{
+      const ws=wm[k].start,we=new Date(ws);we.setDate(ws.getDate()+6);
+      const en=wm[k].entries,wt=en.reduce((a,x)=>a+x.tm,0),wg=en.reduce((a,x)=>a+x.g,0);
+      const{net}=calcTax(wg);
+      const isCur=k===ck;
+      const pd=payDate(we);
+      sh+='<div class="wkselitem '+(k===selPW?'sel':'')+'" onclick="selW(\''+k+'\')">';
+      sh+='<div><div class="wksellbl">'+ws.getDate()+' '+MS[ws.getMonth()]+' &#8211; '+we.getDate()+' '+MS[we.getMonth()]+(isCur?'<span class="cur-badge">current</span>':'')+'</div>';
+      sh+='<div class="wkselsub">'+en.length+' session'+(en.length!==1?'s':'')+' &middot; '+fmins(wt)+' &middot; Pay: '+pd.getDate()+' '+MS[pd.getMonth()]+'</div></div>';
+      sh+='<div class="wkselval"><div class="wkselhrs"><span class="pay-sensitive">~'+gbp(net)+'</span></div><div style="font-size:10px;color:var(--text3)">take-home</div></div>';
+      sh+='</div>';
+    });
+    sh+='</details>';
+  });
+
+  document.getElementById('pw-selector').innerHTML=sh;
+  renderPWDetail(selPW,wm[selPW]);
+}
+function selW(k){selPW=k;renderPW();}
+function renderPWDetail(k,wd){
+  const ws=wd.start,we=new Date(ws);we.setDate(ws.getDate()+6);
+  const en=wd.entries.slice().sort((a,b)=>b.date.localeCompare(a.date));
+  const wnm=en.reduce((a,x)=>a+(x.nm||0),0);
+  const wnsatMins=en.reduce((a,x)=>a+(x.nsatMins!==undefined?x.nsatMins:(x.um||0)),0);
+  const wsunBHMins=en.reduce((a,x)=>a+(x.sunBHMins||0),0);
+  const wtm=en.reduce((a,x)=>a+x.tm,0);
+  const wnp=en.reduce((a,x)=>a+(x.np||0),0);
+  const wnsp=en.reduce((a,x)=>a+(x.nsp||(x.up||0)),0);
+  const wsbp=en.reduce((a,x)=>a+(x.sbp||0),0);
+  const wg=en.reduce((a,x)=>a+x.g,0);
+  const{tax,ni,net}=calcTax(wg);
+  const alEligMins=en.filter(x=>x.date>=AL_START).reduce((a,x)=>a+x.tm,0);
+  const alEarned=alEligMins*(AL_RATE/60);
+
+  let h='<div class="glbl" style="margin-top:1.25rem">'+ws.getDate()+' '+MS[ws.getMonth()]+' &#8211; '+we.getDate()+' '+MS[we.getMonth()]+' '+we.getFullYear()+'</div>';
+  // Pay date badge
+  const pd=payDate(we);
+  const pdNow=new Date();pdNow.setHours(0,0,0,0);
+  const pdLabel=pd>=pdNow?'Pay date: '+fmtPayDate(pd):'Paid: '+fmtPayDate(pd);
+  h+='<div style="background:var(--bank-bg);border:1px solid var(--bank-light);border-radius:var(--radius-sm);padding:8px 13px;margin-bottom:.75rem;display:flex;align-items:center;justify-content:space-between">';
+  h+='<span style="font-size:13px;color:var(--bank)">&#128197; '+pdLabel+'</span>';
+  h+='<span style="font-size:11px;color:var(--text3)">next Friday after week ends</span></div>';
+  h+='<div class="pw-pay-section">';
+  h+='<div class="paycard"><div class="payctitle">Approx Pay Breakdown</div>';
+  h+='<div style="font-size:11px;color:var(--text3);margin-bottom:.6rem">&#8505; Estimated — actual pay may differ slightly</div>';
+  h+='<div class="payrow"><div class="payrlbl">Normal hours<small>'+fmins(wnm)+' &#215; &#163;'+NR.toFixed(2)+'/hr ('+NHS_BANDS[userBand].label+')</small></div><div class="payval">~'+gbp(wnp)+'</div></div>';
+  if(wnsatMins>0)h+='<div class="payrow"><div class="payrlbl">Night / Saturday<small>'+fmins(wnsatMins)+' &#215; &#163;'+(NR*(1+NIGHT_SAT_PCT)).toFixed(2)+'/hr (+'+Math.round(NIGHT_SAT_PCT*100)+'%)</small></div><div class="payval">~'+gbp(wnsp)+'</div></div>';
+  if(wsunBHMins>0)h+='<div class="payrow"><div class="payrlbl">Sunday / Bank Holiday<small>'+fmins(wsunBHMins)+' &#215; &#163;'+(NR*(1+SUN_BH_PCT)).toFixed(2)+'/hr (+'+Math.round(SUN_BH_PCT*100)+'%)</small></div><div class="payval" style="color:#b45309">~'+gbp(wsbp)+'</div></div>';
+  h+='<div class="payrow"><div class="payrlbl">Gross pay <span style="font-size:11px;color:var(--text3)">'+fmins(wtm)+'</span></div><div class="payval">~'+gbp(wg)+'</div></div>';
+  h+='<div class="payrow"><div class="payrlbl">Income tax (20%)<small>Basic rate</small></div><div class="payval neg">~&#8722;'+gbp(tax)+'</div></div>';
+  h+='<div class="payrow"><div class="payrlbl">NI (8%)<small>Above &#163;242/wk</small></div><div class="payval neg">~&#8722;'+gbp(ni)+'</div></div>';
+  h+='<div class="paytotal"><div class="paytlbl">Approx take-home</div><div class="paytval">~'+gbp(net)+'</div></div></div>';
+  if(alEarned>0){
+    h+='<div style="background:var(--green-bg);border:1px solid var(--green-border);border-radius:var(--radius);padding:.75rem 1rem;margin-bottom:1rem;display:flex;justify-content:space-between;align-items:center">';
+    h+='<div style="font-size:13px;color:#1a4a2a">&#127334; Annual leave earned</div>';
+    h+='<div style="font-family:\'DM Serif Display\',serif;font-size:1.1rem;color:var(--green)">+'+fminsAL(alEarned)+'</div></div>';
+  }
+  h+='</div>';
+  h+='<div class="glbl">Sessions</div>';
+  const bd={};en.forEach(x=>{if(!bd[x.date])bd[x.date]=[];bd[x.date].push(x);});
+  Object.keys(bd).sort((a,b)=>b.localeCompare(a)).forEach(date=>{
+    const d=new Date(date+'T00:00:00');
+    const dm=bd[date].reduce((a,x)=>a+x.tm,0),dg=bd[date].reduce((a,x)=>a+x.g,0);
+    h+='<div style="font-size:11px;font-weight:700;color:var(--text3);margin:.6rem 0 .4rem;text-transform:uppercase;letter-spacing:.06em">';
+    h+=DS[d.getDay()]+', '+d.getDate()+' '+MS[d.getMonth()];
+    h+=' <span style="color:var(--bank)">'+fmins(dm)+' &#183; '+gbp(dg)+'</span></div>';
+    bd[date].forEach(x=>{
+      h+='<div class="bentry"><div class="bentryrow"><div class="bentryicon">&#127974;</div><div class="bentrybody">';
+      h+='<div class="bentryhrs">'+fmins(x.tm)+'&nbsp;<span style="font-size:12px;color:var(--bank);font-weight:600">'+gbp(x.g)+' gross</span></div>';
+      h+='<div class="bentrydet">'+x.from+' &#8594; '+x.to+(x.note?' &#183; '+esc(x.note):'')+'</div>';
+      h+='<div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:3px">';
+      if(x.nm>0)h+='<span style="color:var(--green);font-size:11px">&#9728; '+fmins(x.nm)+' normal</span>';
+      const nsM3=x.nsatMins!==undefined?x.nsatMins:(x.um||0),sbM3=x.sunBHMins||0;
+    const dtL3={weekday:'Weekday',saturday:'Saturday',sunday:'Sunday',bankholiday:'Bank Holiday'}[x.dayType||'weekday'];
+    if(nsM3>0)h+='<span style="color:var(--red);font-size:11px">🌙 '+fmins(nsM3)+' night/Sat</span>';
+    if(sbM3>0)h+='<span style="background:#fff3e0;color:#b45309;font-size:11px;padding:1px 5px;border-radius:4px">☉ '+fmins(sbM3)+' Sun/BH</span>';
+      h+='</div></div>';
+      h+='<button class="del" onclick="delBankPW('+x.id+')" title="Delete this session">&#215;</button>';
+      h+='</div></div>';
+    });
+  });
+  document.getElementById('pw-detail').innerHTML=h;
+  applySal();
+}
+
+// ── ANNUAL LEAVE ──
+function alBankMins(){return bank.filter(x=>x.date>=AL_START).reduce((a,x)=>a+x.tm,0);}
+function alAccrued(){return alBankMins()*(AL_RATE/60);}
+function alTaken(){return alLeave.filter(x=>x.type==='annual'||x.type==='cashin').reduce((a,x)=>a+x.hours,0);}
+function alOther(){return alLeave.filter(x=>x.type!=='annual'&&x.type!=='cashin').reduce((a,x)=>a+x.hours,0);}
+function alBal(){return Math.max(0,alAccrued()-alTaken());}
+// Total cash earned from cashing in A/L
+function alCashTotal(){return alLeave.filter(x=>x.type==='cashin').reduce((a,x)=>a+(x.cashPay||0),0);}
+
+// Cash-in pay date: before Sunday noon = this week's Friday; Sunday noon or after = next week's Friday
+function cashInPayDate(requestedAt){
+  const d=new Date(requestedAt);
+  const isSun=d.getDay()===0;
+  const afterNoon=isSun&&d.getHours()>=12;
+  const day=d.getDay(),daysSinceMon=(day===0)?6:day-1;
+  const mon=new Date(d);mon.setDate(d.getDate()-daysSinceMon+(afterNoon?7:0));mon.setHours(12,0,0,0);
+  const sun=new Date(mon);sun.setDate(mon.getDate()+6);
+  const fri=new Date(sun);fri.setDate(sun.getDate()+5);
+  return fri;
+}
+
+function addAL(){
+  const dv=document.getElementById('al-date').value;
+  const hv=parseFloat(document.getElementById('al-hours').value);
+  const tv=document.getElementById('al-type').value;
+  const nv=document.getElementById('al-note').value.trim();
+  if(!dv){document.getElementById('al-date').focus();return;}
+  if(!hv||hv<=0){document.getElementById('al-hours').focus();return;}
+  const bal=alBal();
+  if((tv==='annual'||tv==='cashin')&&hv>bal+0.0001){
+    alert('Not enough A/L balance.\n\nYou have '+fminsAL(bal)+' available but tried to log '+fminsAL(hv)+'.\n\nPlease enter '+fminsAL(bal)+' or less.');
+    return;
+  }
+  const entry={id:Date.now(),date:dv,hours:hv,type:tv,note:nv};
+  // For cash-in, calculate pay and work out which Friday it will be paid
+  if(tv==='cashin'){
+    const now=new Date();
+    entry.cashPay=hv*NR;
+    entry.requestedAt=now.toISOString();
+    entry.cashPayDate=cashInPayDate(now).toISOString().slice(0,10);
+  }
+  alLeave.unshift(entry);
+  document.getElementById('al-hours').value='';
+  document.getElementById('al-note').value='';
+  save();renderAL();
+}
+function delAL(id){if(!confirm('Delete this entry?'))return;alLeave=alLeave.filter(x=>x.id!==id);save();renderAL();}
+
+function renderAL(){
+  const bm=alBankMins(),acc=alAccrued(),tkn=alTaken(),bal=alBal();
+  const cashTotal=alCashTotal();
+  const pct=acc>0?Math.min(100,Math.round((tkn/acc)*100)):0;
+  document.getElementById('al-bal').textContent=fminsAL(bal);
+  document.getElementById('al-bal-sub').textContent=fminsAL(acc)+' accrued \u2212 '+fminsAL(tkn)+' used';
+  document.getElementById('al-pbf').style.width=pct+'%';
+  document.getElementById('al-bankhrs').textContent=fmins(bm);
+  document.getElementById('al-accrued').textContent=fminsAL(acc);
+  document.getElementById('al-taken').textContent=fminsAL(tkn);
+  if(!document.getElementById('al-date').value)document.getElementById('al-date').value=tod();
+
+  const lel=document.getElementById('al-list');
+  if(!alLeave.length&&bm===0){
+    lel.innerHTML='<div class="empty"><span class="emptyicon">&#127334;</span>No bank hours from 1 Apr 2026 yet</div>';
+    return;
+  }
+
+  // Accrual by month
+  const byM={};
+  bank.filter(x=>x.date>=AL_START).forEach(x=>{const k=x.date.slice(0,7);if(!byM[k])byM[k]=0;byM[k]+=x.tm;});
+  let h='';
+  if(Object.keys(byM).length){
+    h+='<div class="glbl">Accrual (from 1 Apr 2026)</div>';
+    h+='<div class="accrual-table">';
+    let run=0;
+    Object.keys(byM).sort().forEach(mo=>{
+      const d=new Date(mo+'-01'),mA=byM[mo]*(AL_RATE/60);run+=mA;
+      h+='<div class="accrual-row"><div><div style="font-size:14px;font-weight:500">'+MONTHS[d.getMonth()]+' '+d.getFullYear()+'</div><div style="font-size:12px;color:var(--text3)">'+fmins(byM[mo])+' worked</div></div>';
+      h+='<div style="text-align:right"><div style="font-family:\'DM Serif Display\',serif;font-size:1rem;color:var(--green)">+'+fminsAL(mA)+'</div><div style="font-size:11px;color:var(--text3)">Running: '+fminsAL(run)+'</div></div></div>';
+    });
+    h+='<div class="accrual-row total"><div style="font-size:13px;font-weight:600;color:var(--green)">Total accrued</div><div style="font-family:\'DM Serif Display\',serif;font-size:1.1rem;color:var(--green)">'+fminsAL(acc)+'</div></div>';
+    h+='</div>';
+  }
+
+  if(alLeave.length){
+    // A/L taken (time off)
+    const alOnly=alLeave.filter(x=>x.type==='annual');
+    // A/L cashed in
+    const alCash=alLeave.filter(x=>x.type==='cashin');
+    // Other
+    const otherL=alLeave.filter(x=>x.type!=='annual'&&x.type!=='cashin');
+
+    if(alCash.length){
+      const cashSum=alCash.reduce((a,x)=>a+(x.cashPay||0),0);
+      h+='<div class="glbl">A/L Cashed In</div>';
+      h+='<div style="background:var(--bank-bg);border:1px solid var(--bank-light);border-radius:var(--radius);padding:.75rem 1rem;margin-bottom:.75rem;display:flex;justify-content:space-between;align-items:center">';
+      h+='<div style="font-size:13px;color:var(--bank)">&#128184; Total cashed in: '+fminsAL(alCash.reduce((a,x)=>a+x.hours,0))+'</div>';
+      h+='<div style="font-family:\'DM Serif Display\',serif;font-size:1.1rem;color:var(--bank)">~'+gbp(cashSum)+'</div></div>';
+      alCash.forEach(x=>{
+        const d=new Date(x.date+'T00:00:00');
+        const pay=x.cashPay||x.hours*NR;
+        // Pay date: stored on entry, or calculate from requestedAt, or fall back to entry date
+        let pdStr='';
+        if(x.cashPayDate){
+          const pd=new Date(x.cashPayDate+'T00:00:00');
+          const today=new Date();today.setHours(0,0,0,0);
+          const isPast=pd<today;
+          pdStr='<div style="font-size:12px;'+(isPast?'color:var(--text3)':'color:var(--bank);font-weight:600')+';margin-top:3px">'+(isPast?'&#10003; Paid on: ':'&#128197; Pay date: ')+DS[pd.getDay()]+' '+pd.getDate()+' '+MS[pd.getMonth()]+' '+pd.getFullYear()+'</div>';
+        }
+        h+='<div class="alentry">';
+        h+='<div class="alentry-icon" style="background:var(--bank-bg)">&#128184;</div>';
+        h+='<div class="alentry-body">';
+        h+='<div class="alentry-hrs" style="color:var(--bank)">'+fminsAL(x.hours)+' cashed in &nbsp;<span style="font-size:12px;font-weight:600">~'+gbp(pay)+'</span></div>';
+        h+='<div class="alentry-det">Requested: '+DS[d.getDay()]+', '+d.getDate()+' '+MS[d.getMonth()]+' '+d.getFullYear()+'</div>';
+        h+='<div style="font-size:11px;color:var(--text3);margin-top:1px">'+x.hours+' hrs \u00d7 \u00a3'+NR.toFixed(2)+'/hr</div>';
+        h+=pdStr;
+        if(x.note)h+='<div style="font-size:11px;color:var(--text3)">'+esc(x.note)+'</div>';
+        h+='</div>';
+        h+='<button class="del" onclick="delAL('+x.id+')">&#215;</button></div>';
+      });
+    }
+
+    if(alOnly.length){
+      h+='<div class="glbl">A/L Taken (time off)</div>';
+      alOnly.forEach(x=>{
+        const d=new Date(x.date+'T00:00:00');
+        h+='<div class="alentry"><div class="alentry-icon taken">&#127334;</div><div class="alentry-body"><div class="alentry-hrs taken">'+fminsAL(x.hours)+' taken</div><div class="alentry-det">'+DS[d.getDay()]+', '+d.getDate()+' '+MS[d.getMonth()]+' '+d.getFullYear()+(x.note?' &#183; '+esc(x.note):'')+'</div></div><button class="del" onclick="delAL('+x.id+')">&#215;</button></div>';
+      });
+    }
+
+    if(otherL.length){
+      h+='<div class="glbl">Other absences (reference only)</div>';
+      otherL.forEach(x=>{
+        const d=new Date(x.date+'T00:00:00');
+        const icon=x.type==='sick'?'&#129298;':'&#128197;';
+        h+='<div class="alentry"><div class="alentry-icon">'+icon+'</div><div class="alentry-body"><div class="alentry-hrs" style="color:var(--text2)">'+fminsAL(x.hours)+' <span style="font-size:11px;color:var(--text3)">('+x.type+')</span></div><div class="alentry-det">'+DS[d.getDay()]+', '+d.getDate()+' '+MS[d.getMonth()]+' '+d.getFullYear()+(x.note?' &#183; '+esc(x.note):'')+'</div></div><button class="del" onclick="delAL('+x.id+')">&#215;</button></div>';
+      });
+    }
+
+  } else if(bm>0){
+    h+='<div class="empty" style="padding:1.5rem 1rem"><span style="font-size:1.5rem;display:block;margin-bottom:.5rem">&#127334;</span>No leave logged yet</div>';
+  }
+  lel.innerHTML=h;
+}
+
+// ── OVERVIEW ──
+function renderOv(){
+  const{s,e}=wkBounds(0),we=wkEntries(s,e);
+  const wtm=we.reduce((a,x)=>a+x.tm,0),wg=we.reduce((a,x)=>a+x.g,0);
+  const{net}=calcTax(wg);
+  document.getElementById('ov-wkhrs').textContent=fmins(wtm);
+  document.getElementById('ov-sess').textContent=bank.length;
+  document.getElementById('ov-hrs').textContent=fmins(wtm);
+  document.getElementById('ov-gross').innerHTML='~'+gbp(wg);
+  document.getElementById('ov-net').innerHTML='~'+gbp(net);
+  const bm=alBankMins(),acc=alAccrued(),tkn=alTaken(),bal=alBal();
+  const cashHrs=alLeave.filter(x=>x.type==='cashin').reduce((a,x)=>a+x.hours,0);
+  const cashPay=alCashTotal();
+  document.getElementById('ov-al-bh').textContent=fmins(bm);
+  document.getElementById('ov-al-ac').textContent=fminsAL(acc);
+  // taken = annual only
+  const takenOnly=alLeave.filter(x=>x.type==='annual').reduce((a,x)=>a+x.hours,0);
+  document.getElementById('ov-al-tk').textContent=fminsAL(takenOnly);
+  const ciEl=document.getElementById('ov-al-ci');if(ciEl)ciEl.textContent=fminsAL(cashHrs);
+  const cashEl=document.getElementById('ov-al-cash');if(cashEl)cashEl.innerHTML='~'+gbp(cashPay);
+  document.getElementById('ov-al-bal').textContent=fminsAL(bal);
+  applySal();
+}
+
+// ── AI QUICK LOG ──
+// ── AI QUICK LOG (local parser — instant, no internet needed) ──
+function parseShift(input,today){
+  let s=input.toLowerCase().trim();
+  s=s.replace(/(\d)\.(\d{2})\s*(am|pm)/g,'$1:$2$3');
+  s=s.replace(/(\d{2})\.(\d{2})/g,'$1:$2');
+  s=s.replace(/\bmidnight\b/g,'00:00am');
+  s=s.replace(/\b(noon|midday)\b/g,'12:00pm');
+  s=s.replace(/\bhalf\s*past\s*(\d{1,2})\b/g,'$1:30');
+  s=s.replace(/\bhalf\s+(\d{1,2})\b/g,'$1:30');
+  s=s.replace(/\bquarter\s*(?:past|after)\s*(\d{1,2})\b/g,(m,h)=>h+':15');
+  s=s.replace(/\bquarter\s*to\s*(\d{1,2})\b/g,(m,h)=>String(parseInt(h)-1)+':45');
+  function pt(token){
+    token=token.trim();
+    let m=token.match(/^(\d{1,2}):(\d{2})\s*(am|pm)?$/);
+    if(m){let h=parseInt(m[1]),mi=parseInt(m[2]),ap=m[3];if(ap==='pm'&&h<12)h+=12;if(ap==='am'&&h===12)h=0;return String(h).padStart(2,'0')+':'+String(mi).padStart(2,'0');}
+    m=token.match(/^(\d{1,2})\s*(am|pm)$/);
+    if(m){let h=parseInt(m[1]),ap=m[2];if(ap==='pm'&&h<12)h+=12;if(ap==='am'&&h===12)h=0;return String(h).padStart(2,'0')+':00';}
+    return null;
+  }
+  const timeRe=/\b\d{1,2}:\d{2}\s*(?:am|pm)?\b|\b\d{1,2}\s*(?:am|pm)\b/g;
+  const matches=[...s.matchAll(timeRe)].map(m=>m[0].trim());
+  if(matches.length<2)return null;
+  const from=pt(matches[0]),to=pt(matches[1]);
+  if(!from||!to)return null;
+  const todayD=new Date(today+'T12:00:00');
+  let date=today;
+  if(s.match(/\btomorrow\b/)){const d=new Date(todayD);d.setDate(d.getDate()+1);date=d.toISOString().slice(0,10);}
+  else if(s.match(/\byesterday\b/)){const d=new Date(todayD);d.setDate(d.getDate()-1);date=d.toISOString().slice(0,10);}
+  else if(s.match(/\blast\s+(monday|tuesday|wednesday|thursday|friday|saturday|sunday)\b/)){
+    const dns=['sunday','monday','tuesday','wednesday','thursday','friday','saturday'];
+    const m=s.match(/last\s+(monday|tuesday|wednesday|thursday|friday|saturday|sunday)/);
+    const d=new Date(todayD);let diff=d.getDay()-dns.indexOf(m[1]);if(diff<=0)diff+=7;d.setDate(d.getDate()-diff);date=d.toISOString().slice(0,10);
+  }else if(!s.match(/\btoday\b/)){
+    const dns=['sunday','monday','tuesday','wednesday','thursday','friday','saturday'];
+    for(let i=0;i<dns.length;i++){if(new RegExp('\\b'+dns[i]+'\\b').test(s)){const d=new Date(todayD);let diff=d.getDay()-i;if(diff<0)diff+=7;if(diff===0)diff=7;d.setDate(d.getDate()-diff);date=d.toISOString().slice(0,10);break;}}
+  }
+  let dayType;
+  if(s.match(/\bbank\s*hol/))dayType='bankholiday';
+  else if(s.match(/\bsunday\b/))dayType='sunday';
+  else if(s.match(/\bsaturday\b/))dayType='saturday';
+  else{const d=new Date(date+'T00:00:00'),dy=d.getDay();dayType=dy===0?'sunday':dy===6?'saturday':'weekday';}
+  const noteM=s.match(/(?:note|notes?)[:\s]+(.+)$/);
+  return{date,from,to,dayType,note:noteM?noteM[1]:''};
+}
+
+// ── QUICK LOG ──
+let _qlDate=null; // tracks selected date for quick log
+function qlInit(){
+  // Populate hour dropdowns 00-23
+  const hours=Array.from({length:24},(_,i)=>String(i).padStart(2,'0'));
+  const mins=['00','05','10','15','20','25','30','35','40','45','50','55'];
+  ['ql-fh','ql-th'].forEach(id=>{
+    const sel=document.getElementById(id);
+    if(sel&&!sel.options.length)sel.innerHTML=hours.map(h=>`<option value="${h}">${h}</option>`).join('');
+  });
+  ['ql-fm','ql-tm'].forEach(id=>{
+    const sel=document.getElementById(id);
+    if(sel&&!sel.options.length)sel.innerHTML=mins.map(m=>`<option value="${m}">${m}</option>`).join('');
+  });
+  // Default: 07:30 → 15:30
+  const fh=document.getElementById('ql-fh');if(fh)fh.value='07';
+  const fm=document.getElementById('ql-fm');if(fm)fm.value='30';
+  const th=document.getElementById('ql-th');if(th)th.value='15';
+  const tm=document.getElementById('ql-tm');if(tm)tm.value='30';
+  qlSetDate(0);
+}
+function qlSetDate(offset){
+  const d=new Date();d.setHours(12,0,0,0);
+  if(offset!==0)d.setDate(d.getDate()+offset);
+  _qlDate=d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+  document.getElementById('ql-date').value=_qlDate;
+  // Highlight active button
+  ['ql-today','ql-yesterday','ql-tomorrow'].forEach(id=>{
+    const btn=document.getElementById(id);
+    if(btn){btn.style.background='transparent';btn.style.borderColor='rgba(255,255,255,.2)';}
+  });
+  const btnId=offset===0?'ql-today':offset===-1?'ql-yesterday':'ql-tomorrow';
+  const btn=document.getElementById(btnId);
+  if(btn){btn.style.background='rgba(255,255,255,.25)';btn.style.borderColor='rgba(255,255,255,.7)';}
+}
+function qlDatePicked(){
+  _qlDate=document.getElementById('ql-date').value;
+  // Deselect shortcut buttons since user picked custom date
+  ['ql-today','ql-yesterday','ql-tomorrow'].forEach(id=>{
+    const btn=document.getElementById(id);
+    if(btn){btn.style.background='transparent';btn.style.borderColor='rgba(255,255,255,.2)';}
+  });
+}
+function qlPreset(from,to){
+  document.getElementById('ql-from').value=from;
+  document.getElementById('ql-to').value=to;
+  document.getElementById('ql-status').textContent='';
+}
+function qlLog(){
+  const status=document.getElementById('ql-status');
+  const fh=document.getElementById('ql-fh').value;
+  const fm=document.getElementById('ql-fm').value;
+  const th=document.getElementById('ql-th').value;
+  const tm=document.getElementById('ql-tm').value;
+  const from=fh+':'+fm;
+  const to=th+':'+tm;
+  const date=_qlDate||tod();
+  // Day type
+  const qlDT=document.getElementById('ql-daytype').value;
+  let dayType;
+  if(qlDT==='auto'){
+    const d=new Date(date+'T00:00:00'),dy=d.getDay();
+    dayType=dy===0?'sunday':dy===6?'saturday':'weekday';
+  } else { dayType=qlDT; }
+  const note=document.getElementById('ql-note').value.trim();
+  // Fill hidden fields and submit
+  document.getElementById('b-date').value=date;
+  document.getElementById('b-from').value=from;
+  document.getElementById('b-to').value=to;
+  document.getElementById('b-daytype').value=dayType;
+  document.getElementById('b-note').value=note;
+  addBank();
+  // Reset note only, keep times for quick re-entry
+  document.getElementById('ql-note').value='';
+  document.getElementById('ql-daytype').value='auto';
+  const d=new Date(date+'T00:00:00');
+  const DS=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  const MS=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  status.textContent='\u2705 Logged: '+DS[d.getDay()]+' '+d.getDate()+' '+MS[d.getMonth()]+' \u00b7 '+from+'\u2013'+to+' \u00b7 '+dayType;
+}
+
+function aiLog(){
+  const input=document.getElementById('ai-log-input').value.trim();
+  const status=document.getElementById('ai-log-status');
+  if(!input){status.textContent='Please type something first.';return;}
+  const today=tod();
+  const result=parseShift(input,today);
+  if(!result){
+    status.textContent='\u274c Try formats like: "1am to 3am" or "9:00 to 17:00" or "7:30am to 3:30pm today"';
+    return;
+  }
+  document.getElementById('b-date').value=result.date;
+  document.getElementById('b-from').value=result.from;
+  document.getElementById('b-to').value=result.to;
+  document.getElementById('b-daytype').value=result.dayType;
+  if(result.note)document.getElementById('b-note').value=result.note;
+  const d=new Date(result.date+'T00:00:00');
+  const DS2=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  const MS2=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  status.textContent='\u2705 '+DS2[d.getDay()]+' '+d.getDate()+' '+MS2[d.getMonth()]+' \u00b7 '+result.from+'\u2013'+result.to+' \u00b7 '+result.dayType+' \u2014 check below then tap Add Session';
+  document.getElementById('ai-log-input').value='';
+  document.getElementById('b-date').scrollIntoView({behavior:'smooth',block:'center'});
+}
+
+// ── EXPORT: JSON BACKUP ──
+function exportJSON(){
+  if(!bank.length&&!alLeave.length){alert('No data to backup yet.');return;}
+  const data={
+    version:1,
+    exportedAt:new Date().toISOString(),
+    app:'BankWorkTracker',
+    profile:{name:userName,band:userBand,point:userPoint,customRate:customRate},
+    bank:bank,
+    alLeave:alLeave
+  };
+  const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement('a');
+  a.href=url;
+  a.download='bank-tracker-backup-'+tod()+'.json';
+  document.body.appendChild(a);a.click();
+  document.body.removeChild(a);URL.revokeObjectURL(url);
+  const s=document.getElementById('import-status');
+  if(s){s.style.display='block';s.style.color='var(--green)';s.textContent='\u2705 Backup saved! Keep this file safe \u2014 it contains all your sessions and A/L data.';}
+}
+function importJSON(evt){
+  const file=evt.target.files[0];
+  if(!file)return;
+  const s=document.getElementById('import-status');
+  const reader=new FileReader();
+  reader.onload=function(e){
+    try{
+      const data=JSON.parse(e.target.result);
+      if(!data.app||data.app!=='BankWorkTracker')throw new Error('This does not look like a Bank Work Tracker backup file.');
+      if(!Array.isArray(data.bank))throw new Error('Backup file appears to be corrupted.');
+      // Merge: combine existing + imported, deduplicate by id
+      const existingIds=new Set(bank.map(x=>x.id));
+      const existingAlIds=new Set(alLeave.map(x=>x.id));
+      let newSessions=0,newAL=0;
+      data.bank.forEach(x=>{if(!existingIds.has(x.id)){bank.push(x);newSessions++;}});
+      if(data.alLeave)data.alLeave.forEach(x=>{if(!existingAlIds.has(x.id)){alLeave.push(x);newAL++;}});
+      // Restore profile only if current is empty
+      if(!userName&&data.profile){
+        userName=data.profile.name||'';
+        userBand=data.profile.band||'2';
+        userPoint=data.profile.point||0;
+        customRate=data.profile.customRate||0;
+        applyBandRates();
+      }
+      save();renderBank();renderAL();renderPW();renderOv();renderSettings();
+      const msg=newSessions===0&&newAL===0
+        ?'\u2705 Backup imported \u2014 all sessions already present, nothing duplicated.'
+        :'\u2705 Imported! Added '+newSessions+' session'+(newSessions!==1?'s':'')+' and '+newAL+' A/L entr'+(newAL!==1?'ies':'y')+'.';
+      if(s){s.style.display='block';s.style.color='var(--green)';s.textContent=msg;}
+    }catch(err){
+      if(s){s.style.display='block';s.style.color='var(--red)';s.textContent='\u274c Import failed: '+err.message;}
+    }
+    // Reset file input so same file can be re-imported if needed
+    evt.target.value='';
+  };
+  reader.readAsText(file);
+}
+
+// ── EXPORT: CSV ──
+function exportCSV(){
+  if(!bank.length){alert('No sessions to export yet.');return;}
+  const DS2=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  const header=['Date','Day','Day Type','From','To','Total Hours','Normal Mins','Night/Sat Mins','Sun/BH Mins','Normal Pay','Night/Sat Pay','Sun/BH Pay','Gross Pay','Tax (est)','NI (est)','Take-home (est)','Notes'];
+  const rows = bank.slice().sort((a,b)=>a.date.localeCompare(b.date)).map(x=>{
+    const d=new Date(x.date+'T00:00:00');
+    const nsM=x.nsatMins!==undefined?x.nsatMins:(x.um||0);
+    const sbM=x.sunBHMins||0;
+    const np=x.np||0, nsp=x.nsp||(x.up||0), sbp=x.sbp||0;
+    const g=x.g||0;
+    const{tax,ni,net}=calcTax(g);
+    const dtype={weekday:'Weekday',saturday:'Saturday',sunday:'Sunday',bankholiday:'Bank Holiday'}[x.dayType||'weekday'];
+    return [
+      x.date,
+      DS2[d.getDay()],
+      dtype,
+      x.from,
+      x.to,
+      (x.tm/60).toFixed(2),
+      x.nm||0,
+      nsM,
+      sbM,
+      np.toFixed(2),
+      nsp.toFixed(2),
+      sbp.toFixed(2),
+      g.toFixed(2),
+      tax.toFixed(2),
+      ni.toFixed(2),
+      net.toFixed(2),
+      x.note||''
+    ];
+  });
+  const csv=[header,...rows].map(r=>r.map(v=>'"'+String(v).replace(/"/g,'""')+'"').join(',')).join('\n');
+  const blob=new Blob([csv],{type:'text/csv;charset=utf-8;'});
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement('a');
+  a.href=url;a.download='bank-work-sessions-'+tod()+'.csv';
+  document.body.appendChild(a);a.click();
+  document.body.removeChild(a);URL.revokeObjectURL(url);
+}
+
+// ── EXPORT: PDF ──
+function populatePDFMonthSelector(){
+  const sel=document.getElementById('pdf-month-sel');
+  if(!sel)return;
+  // Get all months that have sessions
+  const months={};
+  bank.forEach(x=>{const k=x.date.slice(0,7);months[k]=true;});
+  // Also add current month even if empty
+  const cm=tod().slice(0,7);months[cm]=true;
+  const keys=Object.keys(months).sort((a,b)=>b.localeCompare(a));
+  sel.innerHTML=keys.map(k=>{
+    const d=new Date(k+'-01');
+    return '<option value="'+k+'">'+MONTHS[d.getMonth()]+' '+d.getFullYear()+'</option>';
+  }).join('');
+}
+
+function exportPDF(){
+  if(typeof window.jspdf==='undefined'&&typeof window.jsPDF==='undefined'){
+    alert('PDF library not loaded yet.\n\nMake sure you have an internet connection and try again.');
+    return;
+  }
+  try{
+    const JSPDF=window.jspdf?window.jspdf.jsPDF:window.jsPDF;
+    const sel=document.getElementById('pdf-month-sel');
+    const monthKey=sel?sel.value:tod().slice(0,7);
+    const d0=new Date(monthKey+'-01');
+    const monthName=MONTHS[d0.getMonth()]+' '+d0.getFullYear();
+    const sessions=bank.filter(x=>x.date.slice(0,7)===monthKey).slice().sort((a,b)=>a.date.localeCompare(b.date));
+    const alMonth=alLeave.filter(x=>x.date.slice(0,7)===monthKey);
+    const wnm=sessions.reduce((a,x)=>a+(x.nm||0),0);
+    const wnsM=sessions.reduce((a,x)=>a+(x.nsatMins!==undefined?x.nsatMins:(x.um||0)),0);
+    const wsbM=sessions.reduce((a,x)=>a+(x.sunBHMins||0),0);
+    const wtm=sessions.reduce((a,x)=>a+x.tm,0);
+    const wnp=sessions.reduce((a,x)=>a+(x.np||0),0);
+    const wnsp=sessions.reduce((a,x)=>a+(x.nsp||(x.up||0)),0);
+    const wsbp=sessions.reduce((a,x)=>a+(x.sbp||0),0);
+    const wg=sessions.reduce((a,x)=>a+x.g,0);
+    const{tax,ni,net}=calcTax(wg);
+    const alElig=sessions.filter(x=>x.date>=AL_START).reduce((a,x)=>a+x.tm,0);
+    const alEarned=alElig*(AL_RATE/60);
+    const doc=new JSPDF({orientation:'portrait',unit:'mm',format:'a4'});
+    const PL=15,PR=195,PW=180;let y=15;
+    const sc=(r,g2,b)=>doc.setTextColor(r,g2,b);
+    const t=(s,x,ty,sz,bold,r,g2,b)=>{doc.setFontSize(sz||10);doc.setFont('helvetica',bold?'bold':'normal');sc(r!==undefined?r:40,g2!==undefined?g2:40,b!==undefined?b:40);doc.text(String(s),x,ty);};
+    const tr=(s,x,ty,sz,bold,r,g2,b)=>{doc.setFontSize(sz||10);doc.setFont('helvetica',bold?'bold':'normal');sc(r!==undefined?r:40,g2!==undefined?g2:40,b!==undefined?b:40);doc.text(String(s),x,ty,{align:'right'});};
+    const fr=(x,ry,w,h,r,g2,b)=>{doc.setFillColor(r,g2,b);doc.rect(x,ry,w,h,'F');};
+    const hl=(ly)=>{doc.setDrawColor(200,210,235);doc.line(PL,ly,PR,ly);};
+    // Header
+    fr(0,0,210,28,237,242,255);
+    t('BANK WORK TRACKER',PL,10,16,true,26,79,168);
+    t(userName+' \u2014 '+monthName,PL,17,11,false,70,70,70);
+    t('NHS '+NHS_BANDS[userBand].label+' \u00b7 \u00a3'+NR.toFixed(2)+'/hr',PL,23,9,false,120,120,120);
+    tr('Generated: '+new Date().toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'}),PR,10,8,false,120,120,120);
+    tr('Approx only \u2014 pension not included',PR,15,7,false,160,160,160);
+    hl(29);y=36;
+    // Summary boxes
+    const bw=(PW-9)/4,bh=16;
+    [[String(sessions.length),'Sessions'],[(wtm/60).toFixed(1)+'h','Total Hours'],['\u00a3'+wg.toFixed(2),'Gross Pay'],['\u00a3'+net.toFixed(2),'Take-home']].forEach((b,i)=>{
+      const bx=PL+i*(bw+3);fr(bx,y,bw,bh,220,232,255);doc.setDrawColor(180,200,240);doc.rect(bx,y,bw,bh,'S');
+      t(b[1],bx+bw/2,y+5,7,false,100,100,120);doc.setFontSize(10);doc.setFont('helvetica','bold');sc(26,79,168);doc.text(b[0],bx+bw/2,y+12,{align:'center'});
+    });y+=bh+7;
+    // Pay breakdown
+    t('PAY BREAKDOWN',PL,y+4,9,true,26,79,168);y+=7;hl(y);y+=2;
+    const rows=[['Normal hours (6am\u20138pm weekdays)',fmins(wnm),'\u00a3'+wnp.toFixed(2),40,40,40],['Night / Saturday (+'+Math.round(NIGHT_SAT_PCT*100)+'%)',fmins(wnsM),'\u00a3'+wnsp.toFixed(2),180,80,30]];
+    if(wsbM>0)rows.push(['Sunday / Bank Holiday (+'+Math.round(SUN_BH_PCT*100)+'%)',fmins(wsbM),'\u00a3'+wsbp.toFixed(2),150,90,10]);
+    rows.push(['Gross pay',fmins(wtm),'\u00a3'+wg.toFixed(2),40,40,40]);
+    if(tax>0)rows.push(['Income tax (20%)','',' \u2013\u00a3'+tax.toFixed(2),180,30,30]);
+    if(ni>0)rows.push(['National Insurance (8%)','',' \u2013\u00a3'+ni.toFixed(2),180,30,30]);
+    rows.forEach((r,i)=>{
+      if(i%2===0)fr(PL,y,PW,5.5,248,250,255);
+      t(r[0],PL+2,y+4,9,false,r[3],r[4],r[5]);
+      if(r[1])t(r[1],PL+105,y+4,9,false,100,100,100);
+      tr(r[2],PR-2,y+4,9,false,r[3],r[4],r[5]);
+      y+=5.5;
+    });
+    fr(PL,y,PW,7,210,228,255);doc.setDrawColor(26,79,168);doc.rect(PL,y,PW,7,'S');
+    t('Approx take-home this month',PL+2,y+5,10,true,26,79,168);tr('\u00a3'+net.toFixed(2),PR-2,y+5,11,true,26,79,168);y+=11;
+    // A/L
+    if(alEarned>0||alMonth.length>0){
+      t('ANNUAL LEAVE',PL,y+4,9,true,26,120,60);y+=7;hl(y);y+=2;
+      const alTkn=alMonth.filter(x=>x.type==='annual').reduce((a,x)=>a+x.hours,0);
+      const alCi=alMonth.filter(x=>x.type==='cashin').reduce((a,x)=>a+x.hours,0);
+      const alCiP=alMonth.filter(x=>x.type==='cashin').reduce((a,x)=>a+(x.cashPay||0),0);
+      const ar=[['A/L accrued (12.07%)',fminsAL(alEarned)]];
+      if(alTkn>0)ar.push(['A/L taken',fminsAL(alTkn)]);
+      if(alCi>0)ar.push(['A/L cashed in (\u00a3'+alCiP.toFixed(2)+')',fminsAL(alCi)]);
+      ar.forEach((r,i)=>{if(i%2===0)fr(PL,y,PW,5.5,238,255,245);t(r[0],PL+2,y+4,9,false,30,100,60);tr(r[1],PR-2,y+4,9,false,30,100,60);y+=5.5;});
+      y+=3;
+    }
+    // Session log
+    if(sessions.length>0){
+      t('SESSION LOG',PL,y+4,9,true,26,79,168);y+=7;
+      fr(PL,y,PW,6,26,79,168);
+      const cols=[PL+2,PL+28,PL+52,PL+70,PL+100,PL+122,PL+146,PR-2];
+      ['Date','Day','Type','From-To','Hrs','Gross','Take-home'].forEach((h,i)=>{doc.setFontSize(7.5);doc.setFont('helvetica','bold');sc(255,255,255);i===6?doc.text(h,cols[i+1],y+4,{align:'right'}):doc.text(h,cols[i],y+4);});
+      y+=6;
+      const DS2=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+      sessions.forEach((x,i)=>{
+        if(y>272){doc.addPage();y=15;}
+        if(i%2===0)fr(PL,y,PW,5.5,248,250,255);
+        const d=new Date(x.date+'T00:00:00'),g=x.g||0,{net:sn}=calcTax(g);
+        const dtype={weekday:'Wkday',saturday:'Sat',sunday:'Sun',bankholiday:'BH'}[x.dayType||'weekday']||'Wkday';
+        const isSun=x.dayType==='sunday'||x.dayType==='bankholiday',isSat=x.dayType==='saturday';
+        doc.setFontSize(8);doc.setFont('helvetica','normal');
+        sc(isSun?150:isSat?180:40,isSun?90:isSat?80:40,isSun?10:isSat?30:40);
+        doc.text(x.date,cols[0],y+4);doc.text(DS2[d.getDay()],cols[1],y+4);doc.text(dtype,cols[2],y+4);
+        doc.text((x.from||'')+'-'+(x.to||''),cols[3],y+4);doc.text((x.tm/60).toFixed(1)+'h',cols[4],y+4);doc.text('\u00a3'+g.toFixed(2),cols[5],y+4);
+        sc(26,79,168);doc.text('\u00a3'+sn.toFixed(2),cols[7],y+4,{align:'right'});
+        y+=5.5;
+      });
+      fr(PL,y,PW,6.5,200,215,245);doc.setDrawColor(160,185,230);doc.rect(PL,y,PW,6.5,'S');
+      doc.setFontSize(8.5);doc.setFont('helvetica','bold');sc(26,79,168);
+      doc.text('TOTAL ('+sessions.length+' session'+(sessions.length!==1?'s':'')+')',cols[0],y+4.5);
+      doc.text((wtm/60).toFixed(1)+'h',cols[4],y+4.5);doc.text('\u00a3'+wg.toFixed(2),cols[5],y+4.5);doc.text('\u00a3'+net.toFixed(2),cols[7],y+4.5,{align:'right'});
+      y+=9;
+    } else {
+      t('No sessions logged for '+monthName+'.',PL+2,y+6,10,false,120,120,120);y+=12;
+    }
+    // Footer
+    doc.setDrawColor(200,200,200);doc.line(PL,283,PR,283);
+    doc.setFontSize(7);doc.setFont('helvetica','normal');sc(150,150,150);
+    doc.text('Bank Work Tracker \u2014 '+userName,PL,287);
+    doc.text('Figures are approximate. Pension not included. Verify with your payslip.',PR,287,{align:'right'});
+    doc.save('bank-work-'+(userName||'report').replace(/\s+/g,'-')+'-'+monthKey+'.pdf');
+  }catch(err){
+    console.error('PDF error:',err);
+    alert('PDF generation failed.\n\nError: '+err.message+'\n\nTry the CSV export instead.');
+  }
+}
+
+
+// ── PWA MANIFEST (injected dynamically so it works from a local file) ──
+(function(){
+  const icon192='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMAAAADACAYAAABS3GwHAAAE+klEQVR42u3dv2tdZRjA8eecpEGURmJpTFohESRdHATddHDTQVoRi4Od23/AXVQUB0cXcXJQqYttEESlKE4uCtVMgrZ30KSiUhMxMaLXqaGJ1Nybe+457znv57OF/sjJ5fme5z3XNBbRsMMLJ/tBtjZ6y0WTn78w8OQcRGHoyTmGwuCTcwiFwSfnEAqDT84hFAafnEMoDT9tVcXslYafnCMoDD45H4lKw0/O26A0/OQcQWn4yTmC0vCTcwSll4qclVWVBG3cAqXhJ+cISsNPzhF4BsAzgLs/uW6BSS8NVZn7YG7f37P2xFpS11y4+zPOgU8tiL3fL2QD0Mjg7/27mtoMhbs/TQx+kxvh5i3gXSCSGf46P89/NoC7PykMZF3b4MYWsAFIcvjr+vwCIMnhr+s6SscfUh3+cV7PjZm3AUh6+Md9XQIgawIg+bv/OK+vcP6nDcN/syrfHrUBcATC3T/X6/XNcFTuxG33xJm7Ho2H7rgv5g7NxGQxEdf+uh5X/rwWH65/GR//9lX8/s9WEtfqGcDdv9K/7/TMw/HisTMxUdz6cPHWL5fi5dX3kngWcASiMotTs/HCsWf/d/hT4whEZZ6eeSQmi4mdj/vRj9fW3o8L17+Irf52LEzNxuPTD8ZWf1sAdM8Dt9+76+NL61/Hmz9/tPPxymYvVjZ7SV2zI5Dzf2WOTt656+PLm98nf/0CoDJT5e4DxfrffyR/zQIga94GdQQaycLUbHyy9NJAv/fy5pU4/d2rlX4No74VagOQNQGQNW+DMpLe9k+xtHIuIiI+PfFKHD90ZOfXnv/x7Xj3189tABAACICUpPaDapu4fm+DZm7Ut0Kfu/upOHv0saH+zGcb38TZ3utJBGAD4AgEuXIEonX/JLLK5xcbAEcg8ta2d4P8WBQQADlugaqvUwC0JoJxXF+S3wy3fvXiqnFsxtLKufmcvt5k3gY19CJoYjuVhp+9vr3/jdUchj+JAAy/CJp8LikNP6lGUMdDeWPPAIbfc0GTg9/oBjD8tkEKw9/IBjD8tsF+gU0vnqpt2/hH8Rx4WKsIoennDAFQ2fAOEkRqb7HWegRy/GFQdR2DfC8QWRMAAgABgABAACAAEAB0XK3/Jfj4k+fnveTYACAAEAAIAAQAAgABgABAACAAEAAIAAQAAgABgABAACAAEAAIAAQAA6j1p0L8cOEZPx6dgUwvvuPHo4MAQAAgABAACAAEAAIAAYAAQAAgABAACAAEAAIAAYAAQAAgABAAAgABgABAACAAEAAIAAQAAgABgABAACCAoUwvnpr3kpPSnNgA2AAgAMcgMjv+NLYBREAqc1Hm9MVi+JN6BhABTc9BmfMXT97Dn0QAIjD8TSoOL5zsp/bCrF+9uGo8DH22AUBWRyAQAAgABAACAAGAAEAAIAAQAAgABAACAAGAAOAAAWz0lgsvAzna6C0XNgCOQCAAyDUAzwHkeP63AbABvAQIwDGIDI8/NgA2wK3KgK7f/W0AbID9CoGu3v1tAGyAQUuBrt39bQBsgGGLga7c/ffdACKgy8M/0BFIBHR1+D0D4BmgqpKgbXf/oTaACOja8A99BBIBXRr+Az0DiICuDH9ExEjD7H+xSlsH/8AbwDagK8M/cgAioM3DP/IRyJGItg7+WAIQAm0Z/LEGIARSH/xaAhACqT9f1v4AKwaaHvpGAxAETQ78Xv8CNdmrojbd4k0AAAAASUVORK5CYII=';
+  const icon512='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAgAAAAIACAYAAAD0eNT6AAAN+ElEQVR42u3dPWxd5RnA8fccXycOqZ0YkWJDUgeB8lGxUdQ2pQNThyJToTQd6FgpAxMjqtQKJhADayN1pajqAhFDt6qVGCp1QFUEUiqFmJQm1G2k2HATG9uXiY+mce699v047/v8fkulNgHf91j3+Z/nXLtVYqSmFxY7TgHg/60una+cwug4bEMeQBwIAAx7AFEgADDwAQSBADD0ARADAsDAB0AQCACDHwAhIAAMfQDEgAAw+AEQAgLA4AdACAgAQx8AMSAADH4AhMBQ1YY/AMSbJZWLBQDxtgHFvBiDHwAhECgADH4AhED/sv4MgOEPgBkUaANg8ANgGxBsA2D4A2A2BQsAwx8AM2owKocKAIOVwyOBxm8ADH8AbAOCBYDhD4AIGI7KoQHAcDXxkUDjNgCGPwC2AcECwPAHQAQECwDDHwARECwADH8ARECwADD8ARABwQLA8AdABAQLAMMfABEwvllYR3vBACACxhAAhj8AjH821qW/QAAQAWMMAMMfAJozK+vSXhAAiIAGBIDhDwDNm5117i8AAERAAzcAAEDzDC0A3P0DQHNnaZ3bFwwAIqCBAWD4A0DzZ6vPAABAQAMNAHf/AJDHFqBu6hcGAAxv1tZN+4IAgOHPXJ8BAICAdh0A7v4BIL8tQD3uLwAAGP0M9ggAAALacQC4+weAfLcANgAAYAPg7h8AImwBWo4OgF7NvT2347977alrDrBBKnf/AAxy0AuD8VhdOt/XTO/rDxv+AAa+ICgjAjwCADD0G/t1iYHh6bkU3P0DGPo2A+VsAWwAAAz+rF6DEBgMAQBg6Gf7usTAzvW0JrD+BzD4m0wI/K9eHgP4TYAAhr/XbQPg7h/AALQNiLAF8BkAAIO/yDMRAndXu/sHMPydT3m6zXCfAQAw3JxTQB4BABhoIc7MI4EeNwDW/wCGv/PL291muUcAAIaXc7QBcPcPYGg5zwhbABsAAMPKuQbkQ4AABlToM4764UAbAADD33kLAM//AaA0d5rtNgAA7kade8BzFwAAhhABz7/utiIAwPBxHfJ3+4y3AQAwdAh4PQQAgGFDwOsiAAAgoC8DwPN/AHeZlH19vj7rbQAADBcCXicBAGCoEPB6CQAACEgAALibJOB1q1PyAUAAiOKLmW8DAOAukoDXTwAAGB4EvI4CAAACEgAA7hoJeD0FAAAE1HIEAOzGt/YcSt/dfzx9e9+R9PDe+TTXOphmW9Npqp5Mk1UrrW2tp/bWerq5tZbaW+upvXUr3dhsp39+9p/04fpyurL+1X/e3FpzoCNS+RFAgOEpdf2/r96Tzsz+MJ2ePZWOTx0eyD/zg7WP04/+8atszuDaU9dsAACI48cHHk+/nD+T7mvNOIyM+QwAgLv/nkxUdXrxgWfTa0d+YfgXcH1tAADoyUsPPJt+OvuEg7ABACCKZ2ZPGf4CAIBuSlr/T0/sSy/MnXZRC7vOAgCAu/r5vU+mAxP7HURhfAYAgLs6PfuDvv/O9Y3V9Pr1P6d3PnkvXV7/d7qx+WnaW02m/fVUun/yYHpk73w6MXU4nfrGyXR86sFUpcpBCwCAvJW0/j8xdTgd2XNfX3/nT6t/T89f+W1q3/ZLfdqdtdTeWkvLGzfShZtLX/73h1oH0jOz30+P3fNIttc7x98JIAAA2Nb39h/v68+/d+tKeu7D36SNzmbPf2d540Y6t/xHhz1iPgMAwLZO7jvS159/+eof+hr+CAAAGuihPff3/Gc/+uy/6a+fXnRoAgAgntJ++983Jw/2/GffbV9KndRx3QUAALk72MeP/11a+9iBCQAASrC3muz5z36yedOBCQAASjBR9T4mbnXWHZgAAAAEAAAgAABKVNpPAFD29RcAAGADAABEUE0vLHYcA8Du5foIYGbinvS3k6+N/N/7nfefTyub7aK+B3L6PwWyAQCAgAQAAAgAAEAAAAACAAAQAABAplqOACC2lc12Onbh7B3/t4uPnuv5n/Prf72e3rj+FwdqAwAACAAAQAAAAAIAABAAAPnJ6ffA4/oLAACwAQAABAAAIAAAAAEAAGSqml5Y7DgGgMGZe3sum6/1UGsmvXPi1cZ8PWcuvZLebV/K7prn+BMgNgAAEJAAAAABAAAIAAD65jcCut4CAAAQAACAAAAolscArnPTtVw+gLiWN1bSsQtnHYQNAAAgAADYMY8BXF8BAAAIAAB3ibiuAgAAEAAAgAAAyJzHAK6nAAAABACAu0ZcRwEAYHjg+gkAAEAAALiLxHUTAACAAABwN4nrJQAADBVcJwEAYLjg+ggAAIhOAAC4yyTgdWm5zM22cvmtq04Bynfswtl5p2D4j1I1vbDYcbkNe0AEEGsjIwAMfUAEkOI9jhEABj8gAgz/gJ/F8BkAgx+AgGwADH7AFsDdvwDA8AeEgMEfgd8DYPgDDXbx0XPeQwx/GwCDH7AJwPC3ATD8AZsADH8BYPgDIgDDv1ceARj+QIY8EjD4bQAMf8A2AMNfABj+gAjA8O/ObwIEKCACPBIw+PvlMwDu/oGCRA4Bg78/HgEY/kCBGwHDHxsAwx+wDSg+eGaOPu0RSJ98BgAgwDagpBjw4UcbAHf/AIG2At0Gvy2ADQAAhWwF3O3bALj7BwiyGdjN0LcFsAEAYBdDd5RB4C7fBsDdP0DBm4JRDXpbABsAANytsw2/CAgABADbsf4H8H4tAAAAAQAACAAAQAAAAAIgQz5QAuB9WwAAAAIAABAAAIAAAAAEAAAgAAAAAQAACAAAQAAAAAIAABAAAIAAAAAEAAAgAABAAAAAAgAAEAAAgAAAAAQAAJClliPo7sGf/H7eKQBgAwAACAAAQAAAAAIAABAAAIAAAAAEAAAgAAAAAQAACAAAQAAAAAIAABAAAIAAAAABAAAIAABAAAAAAgAAEAAAgAAAAAQAACAAAAABAAAIAABAAAAAAgAAEAAAgAAAAAQAACAAAAABAAACAAAQAACAAAAABAAAIAAAAAEAAAgAAEAAAAACAAAQAACAAAAABAAAIAAAAAEAAAgAAEAAAAACAAAQAAAgAAAAAQAACAAAQAAAAAIAABAAAIAAAACao+UIuvvozZ9ddQoAeZk5+rt5p2ADAAAIAAAQAACAAAAABAAAIAAAAAEAAAgAAEAAAAACAAAQAACAAAAABAAAIAAAAAEAAAgAAEAAAAACAAAQAAAgABwBAAgAAEAAAAACAAAQAACAAAAABAAAIAAAAAEAAAgAAEAAAAACAAAQAACAAAAABAAAIAAAAAEAAAgAABAAAIAAAAAEAAAgAAAAAQAACAAAQAAAAAIAABAAAIAAAAAEAAAgAAAAAQAACAAAQAAAAAIAABAAACAAAAABAAAIAABAAAAAAgAAEAAAgAAAAAQAACAAAAABAAAIAABAAAAAAgAAEAAAgAAAAAQAACAAAEAAAAACAAAQAACAAAAABAAAIAAAAAEAAAgAAEAAAAACAAAQAACAAAAABAAAIAAAAAEAAAiAXZk5+vS8UwDwvi0AAAABAAAIAABAAAAAAiBTPlAC4P1aAAAAAgAAEADFslYC8D4tAAAAAaAuAfD+LAAAAAGgMgHwviwAAAABoDYB8H4sAHzTAeB9WAD45gPA+68AAAAEgAoF8L6LAPDNCOD9FgHgmxLA+ywCwDcngPdXBIBvUgDvq1FV0wuLHccwPCuX37rqFAAMfhsA37wAeP8UAL6JAfC+OXoeAYyYRwIABr8AEAIAGPwCQAgAGPwIADEAYOgjAEQBgGGPAAAAdsyPAQKAAAAABAAAIAAAAAEAAAgAAEAAAAACAAAQAACAAAAABAAAIAAAAAEAAAgAAEAAAAACAAAQAACAAAAAAQAACAAAQAAAAAIAABAAAIAAAAAEAAAgAAAAAQAACAAAQAAAAAIAABAAAIAAAAAEAAAgAAAAAQAAcQNgdel85RgAII7VpfOVDQAARNwAOAIAEAAAgAAAAAQAACAAAICMA8CPAgJADF/MfBsAAIi6AQAABAAAIAAAgGIDwAcBAaBsX5/1NgAAEHkDAAAIAAAgSgD4HAAAlOn2GW8DAADRNwAAQNAA8BgAAMpyp9luAwAANgAAgAAAAOIEgM8BAEAZtpvpNgAAYANgCwAApd/92wAAgA0AACAAkscAAJCrbjPcBgAAbABsAQCg9Lt/GwAAsAGwBQCACHf/NgAAYAMAAAiA23gMAADN1s+stgEAABsAWwAAKP3uf0cbABEAAHkP/x0FAACQvx0FgC0AAOR7928DAAA2ALYAABDh7t8GAABsAGwBACDC3f9ANgAiAADyGv4DCQAAID8DCQBbAADI5+5/oBsAEQAAeQz/gQaACACAPIb/wAMAAMjDwAPAFgAAmj9b61y+UAAw/BseACIAAJo9S30GAAACGmoA2AIAQDNnaJ37CwAAw7+BASACAKB5M7Mu7QUBgOHfoAAQAQDQnBlZl/4CAcDwb0AAiAAAGP9MrKO9YACIPvzHGgAiAADDf3zq6AcAABFnX+0gACDezKsdCADEm3W1gwGAeDOudkAAEG+2NXrYTi8sdnzbAGDwB9gA2AYAYPgHDwARAIDhPxxZDVePBAAw+INsAGwDADCjggeACADAbBqMrIepRwIAGPxBNgC2AQCYQcE3ALYBABj8wQNACABg8AcOACEAgMHfXe2CAUC8WRJiSNoGAGDwBwwAMQCAoR88AIQAAJEHf/gAEAIABn/k1++DcmIAwNAXAAgBAINfACAIAAx8AYAYADD0BQCCAMDAFwCIAgDDXgAgDgAM+cb6HBMiJG58F+WHAAAAAElFTkSuQmCC';
+  const manifest={name:'Bank Work Tracker',short_name:'Bank Tracker',description:'NHS Bank Work Tracker',start_url:'.',display:'standalone',background_color:'#0d1f4e',theme_color:'#0d1f4e',orientation:'portrait',icons:[{src:icon192,sizes:'192x192',type:'image/png'},{src:icon512,sizes:'512x512',type:'image/png'}]};
+  const blob=new Blob([JSON.stringify(manifest)],{type:'application/json'});
+  const url=URL.createObjectURL(blob);
+  const el=document.getElementById('pwa-manifest');
+  if(el)el.href=url;
+})();
+
+// ── FIREBASE CONFIG & SYNC ──
+let fbApp=null,fbDb=null,fbAuth=null,fbUser=null;
+
+function getFbConfig(){
+  try{const c=localStorage.getItem('bwt_fb_config');return c?JSON.parse(c):null;}catch(e){return null;}
+}
+function saveFbConfig(){
+  const apiKey=document.getElementById('fb-api-key').value.trim();
+  const projectId=document.getElementById('fb-project-id').value.trim();
+  const appId=document.getElementById('fb-app-id').value.trim();
+  if(!apiKey||!projectId||!appId){alert('Please fill in all three fields: apiKey, projectId, and appId.');return;}
+  localStorage.setItem('bwt_fb_config',JSON.stringify({apiKey,projectId,appId,authDomain:projectId+'.firebaseapp.com',storageBucket:projectId+'.appspot.com',messagingSenderId:''}));
+  alert('Config saved! The page will reload to connect to Firebase.');
+  location.reload();
+}
+function fbClearConfig(){
+  if(!confirm('Disconnect from Firebase? Your local data will NOT be deleted.'))return;
+  localStorage.removeItem('bwt_fb_config');location.reload();
+}
+
+async function initFirebase(){
+  const cfg=getFbConfig();
+  if(!cfg){
+    const el=document.getElementById('fb-not-configured');if(el)el.style.display='block';
+    return;
+  }
+  try{
+    // Load Firebase SDK dynamically
+    if(!window.firebase){
+      await loadScript('https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js');
+      await loadScript('https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js');
+      await loadScript('https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js');
+    }
+    if(!firebase.apps.length) firebase.initializeApp(cfg);
+    fbApp=firebase.app();
+    fbAuth=firebase.auth();
+    fbDb=firebase.firestore();
+    fbDb.enablePersistence().catch(()=>{});// offline support
+    fbAuth.onAuthStateChanged(async user=>{
+      fbUser=user;
+      updateFbUI();
+      if(user) await fbSyncNow();
+    });
+  }catch(err){
+    console.error('Firebase init error:',err);
+    const el=document.getElementById('fb-not-configured');if(el)el.style.display='block';
+  }
+}
+function loadScript(src){
+  return new Promise((res,rej)=>{
+    if(document.querySelector('script[src="'+src+'"]')){res();return;}
+    const s=document.createElement('script');s.src=src;s.onload=res;s.onerror=rej;
+    document.head.appendChild(s);
+  });
+}
+function updateFbUI(){
+  const cfg=getFbConfig();
+  const notCfg=document.getElementById('fb-not-configured');
+  const signedOut=document.getElementById('fb-signed-out');
+  const signedIn=document.getElementById('fb-signed-in');
+  if(!cfg){
+    if(notCfg)notCfg.style.display='block';
+    if(signedOut)signedOut.style.display='none';
+    if(signedIn)signedIn.style.display='none';
+    return;
+  }
+  if(fbUser){
+    if(notCfg)notCfg.style.display='none';
+    if(signedOut)signedOut.style.display='none';
+    if(signedIn)signedIn.style.display='block';
+    const n=document.getElementById('fb-user-name');if(n)n.textContent=fbUser.displayName||fbUser.email;
+    const e=document.getElementById('fb-user-email');if(e)e.textContent=fbUser.email;
+    const a=document.getElementById('fb-user-avatar');if(a)a.textContent=(fbUser.displayName||fbUser.email||'?')[0].toUpperCase();
+  } else {
+    if(notCfg)notCfg.style.display='none';
+    if(signedOut)signedOut.style.display='block';
+    if(signedIn)signedIn.style.display='none';
+  }
+}
+async function fbSignIn(){
+  if(!fbAuth){alert('Firebase not initialised. Please check your config.');return;}
+  try{
+    const provider=new firebase.auth.GoogleAuthProvider();
+    await fbAuth.signInWithPopup(provider);
+  }catch(err){
+    if(err.code==='auth/popup-blocked'){
+      // Fallback for mobile browsers that block popups
+      const provider=new firebase.auth.GoogleAuthProvider();
+      await fbAuth.signInWithRedirect(provider);
+    } else {
+      alert('Sign-in failed: '+err.message);
+    }
+  }
+}
+async function fbSignOut(){
+  if(!fbAuth)return;
+  await fbAuth.signOut();
+  updateFbUI();
+}
+async function fbSyncNow(){
+  if(!fbUser||!fbDb)return;
+  const statusEl=document.getElementById('fb-sync-status');
+  const lastSyncEl=document.getElementById('fb-last-sync');
+  try{
+    if(statusEl){statusEl.style.background='var(--amber-bg)';statusEl.style.borderColor='var(--amber)';statusEl.style.color='var(--amber)';statusEl.textContent='&#8635; Syncing...';}
+    const uid=fbUser.uid;
+    const docRef=fbDb.collection('users').doc(uid);
+    const doc=await docRef.get();
+    if(doc.exists){
+      // Merge: remote wins for older data, local wins for newer
+      const remote=doc.data();
+      // Merge sessions: combine, deduplicate by id, keep all
+      const remBank=remote.bank||[];
+      const remAL=remote.alLeave||[];
+      const localIds=new Set(bank.map(x=>x.id));
+      const remALIds=new Set(alLeave.map(x=>x.id));
+      remBank.forEach(x=>{if(!localIds.has(x.id))bank.push(x);});
+      remAL.forEach(x=>{if(!remALIds.has(x.id))alLeave.push(x);});
+      // Remote profile wins only if local has none
+      if(!userName&&remote.profile){
+        userName=remote.profile.name||'';
+        userBand=remote.profile.band||'2';
+        userPoint=remote.profile.point||0;
+        customRate=remote.profile.customRate||0;
+        applyBandRates();
+      }
+      save();
+    }
+    // Push local data to Firestore
+    await docRef.set({
+      bank:bank,
+      alLeave:alLeave,
+      profile:{name:userName,band:userBand,point:userPoint,customRate:customRate},
+      lastSync:new Date().toISOString(),
+      appVersion:'2026'
+    });
+    const now=new Date();
+    const syncTime=now.getDate()+' '+MS[now.getMonth()]+' '+now.getHours()+':'+(now.getMinutes()<10?'0':'')+now.getMinutes();
+    if(statusEl){statusEl.style.background='var(--green-bg)';statusEl.style.borderColor='var(--green-border)';statusEl.style.color='var(--green)';statusEl.innerHTML='\u2713 Synced \u2014 data safe in the cloud';}
+    if(lastSyncEl)lastSyncEl.textContent='Last sync: '+syncTime;
+    localStorage.setItem('bwt_last_sync',syncTime);
+    // Refresh display
+    renderBank();renderAL();renderPW();renderOv();updateBandDisplay();
+  }catch(err){
+    console.error('Sync error:',err);
+    if(statusEl){statusEl.style.background='#fff0f0';statusEl.style.borderColor='#fcc';statusEl.style.color='var(--red)';statusEl.textContent='\u26a0 Sync failed \u2014 '+err.message;}
+  }
+}
+
+
+// ── SERVICE WORKER (minimal — enables PWA install prompt) ──
+(function(){
+  try{
+    if('serviceWorker' in navigator){
+      // Minimal SW as data URI — works on both local files and HTTPS hosting
+      const sw='self.addEventListener("install",e=>{self.skipWaiting();});self.addEventListener("activate",e=>{e.waitUntil(clients.claim());});';
+      const blob=new Blob([sw],{type:'text/javascript'});
+      const url=URL.createObjectURL(blob);
+      navigator.serviceWorker.register(url).catch(function(){});
+    }
+  }catch(e){}
+  // Android Chrome install prompt
+  let deferredPrompt = null;
+  window.addEventListener('beforeinstallprompt', e => {
+    e.preventDefault();
+    deferredPrompt = e;
+    const btn = document.getElementById('install-app-btn');
+    if(btn) btn.style.display = 'flex';
+    const card = document.getElementById('install-prompt-card');
+    if(card) card.style.display = 'block';
+  });
+  window.addEventListener('appinstalled', () => {
+    const btn = document.getElementById('install-app-btn');
+    if(btn) btn.style.display = 'none';
+    const card = document.getElementById('install-prompt-card');
+    if(card) card.style.display = 'none';
+    deferredPrompt = null;
+  });
+  window.triggerInstall = function(){
+    if(deferredPrompt){ deferredPrompt.prompt(); deferredPrompt.userChoice.then(()=>{ deferredPrompt=null; }); }
+  };
+})();
+
+// ── BOOT ──
+load();
+if(userName){
+  document.getElementById('setup-screen').classList.add('hidden');
+  initApp();
+} else {
+  document.getElementById('setup-step-1').style.display='block';
+}
+// Init Firebase after app loads (non-blocking)
+setTimeout(initFirebase, 500);
+</script>
+</body>
+</html>
